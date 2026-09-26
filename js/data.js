@@ -1,21 +1,145 @@
 // Datos de galerías e imágenes
-// Fácil de ampliar: añade más entradas a GALLERIES y FLASHCARDS
+// Estructura: 10 galerías principales, cada una con hasta 5 subgalerías
+// Fácil de ampliar: añade entradas a MAIN_GALLERIES, GALLERIES y FLASHCARDS
 
+const MAIN_GALLERIES = [
+  {
+    id: "1",
+    name: "Historias cortas",
+    active: true,
+    subs: [
+      { id: "1.1", name: "itsuki playera putona", active: true },
+      { id: "1.2", name: "Próximamente", active: false },
+      { id: "1.3", name: "Próximamente", active: false },
+      { id: "1.4", name: "Próximamente", active: false },
+      { id: "1.5", name: "Próximamente", active: false }
+    ]
+  },
+  {
+    id: "2",
+    name: "Galería 2",
+    active: false,
+    subs: [
+      { id: "2.1", name: "Próximamente", active: false },
+      { id: "2.2", name: "Próximamente", active: false },
+      { id: "2.3", name: "Próximamente", active: false },
+      { id: "2.4", name: "Próximamente", active: false },
+      { id: "2.5", name: "Próximamente", active: false }
+    ]
+  },
+  {
+    id: "3",
+    name: "Galería 3",
+    active: false,
+    subs: [
+      { id: "3.1", name: "Próximamente", active: false },
+      { id: "3.2", name: "Próximamente", active: false },
+      { id: "3.3", name: "Próximamente", active: false },
+      { id: "3.4", name: "Próximamente", active: false },
+      { id: "3.5", name: "Próximamente", active: false }
+    ]
+  },
+  {
+    id: "4",
+    name: "Galería 4",
+    active: false,
+    subs: [
+      { id: "4.1", name: "Próximamente", active: false },
+      { id: "4.2", name: "Próximamente", active: false },
+      { id: "4.3", name: "Próximamente", active: false },
+      { id: "4.4", name: "Próximamente", active: false },
+      { id: "4.5", name: "Próximamente", active: false }
+    ]
+  },
+  {
+    id: "5",
+    name: "Galería 5",
+    active: false,
+    subs: [
+      { id: "5.1", name: "Próximamente", active: false },
+      { id: "5.2", name: "Próximamente", active: false },
+      { id: "5.3", name: "Próximamente", active: false },
+      { id: "5.4", name: "Próximamente", active: false },
+      { id: "5.5", name: "Próximamente", active: false }
+    ]
+  },
+  {
+    id: "6",
+    name: "Galería 6",
+    active: false,
+    subs: [
+      { id: "6.1", name: "Próximamente", active: false },
+      { id: "6.2", name: "Próximamente", active: false },
+      { id: "6.3", name: "Próximamente", active: false },
+      { id: "6.4", name: "Próximamente", active: false },
+      { id: "6.5", name: "Próximamente", active: false }
+    ]
+  },
+  {
+    id: "7",
+    name: "Galería 7",
+    active: false,
+    subs: [
+      { id: "7.1", name: "Próximamente", active: false },
+      { id: "7.2", name: "Próximamente", active: false },
+      { id: "7.3", name: "Próximamente", active: false },
+      { id: "7.4", name: "Próximamente", active: false },
+      { id: "7.5", name: "Próximamente", active: false }
+    ]
+  },
+  {
+    id: "8",
+    name: "Galería 8",
+    active: false,
+    subs: [
+      { id: "8.1", name: "Próximamente", active: false },
+      { id: "8.2", name: "Próximamente", active: false },
+      { id: "8.3", name: "Próximamente", active: false },
+      { id: "8.4", name: "Próximamente", active: false },
+      { id: "8.5", name: "Próximamente", active: false }
+    ]
+  },
+  {
+    id: "9",
+    name: "Galería 9",
+    active: false,
+    subs: [
+      { id: "9.1", name: "Próximamente", active: false },
+      { id: "9.2", name: "Próximamente", active: false },
+      { id: "9.3", name: "Próximamente", active: false },
+      { id: "9.4", name: "Próximamente", active: false },
+      { id: "9.5", name: "Próximamente", active: false }
+    ]
+  },
+  {
+    id: "10",
+    name: "Galería 10",
+    active: false,
+    subs: [
+      { id: "10.1", name: "Próximamente", active: false },
+      { id: "10.2", name: "Próximamente", active: false },
+      { id: "10.3", name: "Próximamente", active: false },
+      { id: "10.4", name: "Próximamente", active: false },
+      { id: "10.5", name: "Próximamente", active: false }
+    ]
+  }
+];
+
+// Subgalerías con imágenes reales
 const GALLERIES = {
   "1.1": {
     name: "itsuki playera putona",
     images: [
-      // Placeholders - reemplaza con URLs reales de tus imágenes (o súbalas a /images/)
-      "https://picsum.photos/seed/itsuki1/600/800",
-      "https://picsum.photos/seed/itsuki2/600/800"
+      "https://img.ge/i/wmODD63.png",
+      "https://img.ge/i/oo9rL91.png"
     ]
   }
-  // Ejemplo para añadir más:
-  // "1.2": { name: "otra serie", images: ["url1", "url2"] }
+  // Añadir más así:
+  // "1.2": { name: "otra", images: ["url1", "url2"] }
 };
 
-// Flashcards por galería
-// Cada item: { word: "kanji/hiragana", romaji: "...", meaning: "traducción español", distractors: ["opc1", "opc2", "opc3"] }
+// Flashcards por subgalería
+// Cada item: { word, romaji, meaning, distractors: [3 opciones incorrectas] }
 const FLASHCARDS = {
   "1.1": [
     {
@@ -93,7 +217,6 @@ const FLASHCARDS = {
   ]
 };
 
-// Distractors genéricos extras por si se necesitan más (no usados aún)
 const EXTRA_DISTRACTORS = [
   "casa", "comida", "agua", "fuego", "libro", "amigo", "noche", "día",
   "grande", "pequeño", "rápido", "lento", "feliz", "triste"
