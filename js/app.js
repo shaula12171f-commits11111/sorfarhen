@@ -95,7 +95,6 @@ function openSubs(main) {
       ? `${GALLERIES[sub.id].images.length} imágenes`
       : '';
 
-    // Nombre con el id al FINAL: "itsuki playera putona 2.1"
     const displayName = `${sub.name} ${sub.id}`;
 
     let coverHtml = '';
@@ -243,6 +242,7 @@ function showCard() {
     document.getElementById('romaji-display').classList.add('hidden');
     document.getElementById('options-container').innerHTML = '';
     document.getElementById('btn-next-card').classList.add('hidden');
+    document.getElementById('btn-speak').style.display = 'none';
     return;
   }
 
@@ -250,6 +250,7 @@ function showCard() {
   showingRomaji = false;
 
   document.getElementById('quiz-word').textContent = card.word;
+  document.getElementById('btn-speak').style.display = 'inline-flex';
   const romajiEl = document.getElementById('romaji-display');
   romajiEl.textContent = card.romaji;
   romajiEl.classList.add('hidden');
@@ -298,13 +299,21 @@ function showRomajiAndSpeak(card) {
   speakJapanese(card.word);
 }
 
+// Botón de audio al lado de la palabra — siempre disponible
+document.getElementById('btn-speak').addEventListener('click', (e) => {
+  e.stopPropagation();
+  if (currentCardIndex >= currentBlockCards.length) return;
+  const card = currentBlockCards[currentCardIndex];
+  if (card) speakJapanese(card.word);
+});
+
 document.getElementById('btn-next-card').addEventListener('click', () => {
   currentCardIndex++;
   showCard();
 });
 
 document.querySelector('.quiz-card').addEventListener('click', (e) => {
-  if (e.target.classList.contains('option-btn') || e.target.id === 'btn-next-card') return;
+  if (e.target.classList.contains('option-btn') || e.target.id === 'btn-next-card' || e.target.id === 'btn-speak') return;
   if (currentCardIndex >= currentBlockCards.length) return;
   const card = currentBlockCards[currentCardIndex];
   if (!showingRomaji && card) {
