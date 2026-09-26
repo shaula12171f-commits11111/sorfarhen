@@ -13,7 +13,7 @@ Sistema de estudio de japonés con flashcards basado en imágenes de manga/henta
 
 ### Flashcards (modo quiz)
 
-- Sale la **palabra en japonés** arriba.
+- Sale la **palabra en japonés** arriba + botón 🔊 al lado para **escuchar** cuando quieras.
 - 4 opciones en español (1 correcta + 3 incorrectas, al azar).
 - **Correcta** → pasa a la siguiente.
 - **Incorrecta** → muestra el **romaji** + reproduce audio (TTS japonés).
@@ -77,5 +77,5 @@ Ver **[CHANGELOG.md](CHANGELOG.md)** para fechas, horas y cómo volver a una ver
 ## Notas
 
 - El audio usa la API de síntesis de voz del navegador (ja-JP).
+- Botón de altavoz al lado de la palabra en cada flashcard.
 - Diseñado para móvil y escritorio.
-- Cards con miniatura de portada y estilo más redondeado.
