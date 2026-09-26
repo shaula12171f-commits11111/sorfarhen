@@ -138,7 +138,8 @@ const GALLERIES = {
     name: "ichika putona sexo de chill",
     cover: "",
     images: [
-      // Pega aquí las URLs públicas de los paneles de habitación
+      "https://img.ge/i/6ot6t26.png",
+      "https://img.ge/i/dazsg51.png"
     ]
   }
 };
