@@ -37,6 +37,10 @@ En `GALLERIES` cada entrada tiene un campo `cover`.
 - Si `cover` está vacío (`""`), se usa automáticamente la **primera imagen** de `images` como miniatura.
 - Puedes poner una URL propia en `cover` cuando quieras una portada distinta.
 
+## Favicon
+
+Letra **H** rosa en la pestaña del navegador (`favicon.svg`).
+
 ## Ampliar contenido
 
 Edita `js/data.js`:
