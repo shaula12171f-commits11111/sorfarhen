@@ -13,38 +13,22 @@
   </header>
 
   <main id="main-content">
-    <!-- Pantalla principal -->
+    <!-- Pantalla principal: 10 galerías -->
     <section id="home-screen" class="screen active">
-      <div class="container-block">
-        <h2>Historias cortas</h2>
-        <div class="subcontainers">
-          <div class="subcontainer" data-gallery="1.1" data-name="itsuki playera putona">
-            <div class="subcontainer-preview">
-              <span class="sub-title">1.1 itsuki playera putona</span>
-              <span class="sub-count">2 imágenes</span>
-            </div>
-          </div>
-          <div class="subcontainer" data-gallery="1.2" data-name="Próximamente">
-            <div class="subcontainer-preview disabled">
-              <span class="sub-title">1.2 Próximamente</span>
-            </div>
-          </div>
-          <div class="subcontainer" data-gallery="1.3" data-name="Próximamente">
-            <div class="subcontainer-preview disabled">
-              <span class="sub-title">1.3 Próximamente</span>
-            </div>
-          </div>
-          <div class="subcontainer" data-gallery="1.4" data-name="Próximamente">
-            <div class="subcontainer-preview disabled">
-              <span class="sub-title">1.4 Próximamente</span>
-            </div>
-          </div>
-          <div class="subcontainer" data-gallery="1.5" data-name="Próximamente">
-            <div class="subcontainer-preview disabled">
-              <span class="sub-title">1.5 Próximamente</span>
-            </div>
-          </div>
-        </div>
+      <h2 class="section-title">Galerías principales</h2>
+      <div id="main-galleries" class="main-galleries">
+        <!-- Se rellena con JS desde MAIN_GALLERIES -->
+      </div>
+    </section>
+
+    <!-- Pantalla de subgalerías (5 por cada principal) -->
+    <section id="subs-screen" class="screen">
+      <div class="subs-header">
+        <button id="btn-back-subs" class="btn-back">← Volver</button>
+        <h2 id="subs-title"></h2>
+      </div>
+      <div id="sub-galleries" class="subcontainers">
+        <!-- Se rellena con JS -->
       </div>
     </section>
 
