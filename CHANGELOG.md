@@ -11,21 +11,20 @@ git revert <SHA>
 
 ---
 
-## [2026-09-26 13:39 UTC] — 2.2 ichika; 2.1 restaurada
-
-**Commit:** `29bd3ee08883d3694a3f870bef4713cbf9e7d6d2`
+## [2026-09-26 13:40 UTC] — Imágenes 2.2
 
 ### Cambios
-- **2.1** vuelve a ser solo playa (itsuki playera putona + flashcards originales).
-- **2.2** nueva: **ichika putona sexo de chill** (17 flashcards de los paneles de habitación).
-- Imágenes de 2.2 pendientes de URL pública.
+- Galería **2.2** con 2 imágenes:
+  - https://img.ge/i/6ot6t26.png
+  - https://img.ge/i/dazsg51.png
+- Portada de 2.2 = primera imagen (automático).
 
 ### Archivos
 - `js/data.js`, `README.md`, `CHANGELOG.md`
 
 ---
 
-## [2026-09-26 13:35 UTC] — Flashcards habitación (luego movidas a 2.2)
+## [2026-09-26 13:39 UTC] — 2.2 ichika; 2.1 restaurada
 
 ---
 
@@ -33,10 +32,6 @@ git revert <SHA>
 
 ---
 
-## [2026-09-26 12:51 UTC] — Botón audio
-
----
-
 ## Anteriores
 
-Estructura 10 galerías, estilo, swap quintiputas/Historias cortas, etc.
+Botón audio, estilo, estructura 10 galerías, etc.
