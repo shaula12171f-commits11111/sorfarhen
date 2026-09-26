@@ -1,6 +1,7 @@
 // app.js - Lógica principal del sistema de estudio
 
 let currentGalleryId = null;
+let currentMainId = null;
 let currentImages = [];
 let currentImgIndex = 0;
 let currentCards = [];
@@ -24,14 +25,12 @@ function speakJapanese(text) {
   const utter = new SpeechSynthesisUtterance(text);
   utter.lang = 'ja-JP';
   utter.rate = 0.9;
-  // Intentar voz japonesa si existe
   const voices = speechSynthesis.getVoices();
   const jaVoice = voices.find(v => v.lang.startsWith('ja'));
   if (jaVoice) utter.voice = jaVoice;
   speechSynthesis.speak(utter);
 }
 
-// Cargar voces (algunos navegadores las cargan async)
 if (window.speechSynthesis) {
   speechSynthesis.onvoiceschanged = () => {};
 }
@@ -45,22 +44,64 @@ function showScreen(id) {
 function showHome() {
   showScreen('home-screen');
   currentGalleryId = null;
+  currentMainId = null;
+  renderMainGalleries();
 }
+
+// --- Render galerías principales (10) ---
+function renderMainGalleries() {
+  const container = document.getElementById('main-galleries');
+  container.innerHTML = '';
+  MAIN_GALLERIES.forEach(main => {
+    const el = document.createElement('div');
+    el.className = 'main-gallery-card' + (main.active ? '' : ' disabled');
+    el.innerHTML = `
+      <span class="main-num">${main.id}</span>
+      <span class="main-name">${main.name}</span>
+      <span class="main-subs-count">${main.subs.length} subgalerías</span>
+    `;
+    if (main.active) {
+      el.addEventListener('click', () => openSubs(main));
+    }
+    container.appendChild(el);
+  });
+}
+
+// --- Pantalla de subgalerías ---
+function openSubs(main) {
+  currentMainId = main.id;
+  document.getElementById('subs-title').textContent = main.name;
+  const container = document.getElementById('sub-galleries');
+  container.innerHTML = '';
+  main.subs.forEach(sub => {
+    const el = document.createElement('div');
+    el.className = 'subcontainer';
+    const previewClass = sub.active ? 'subcontainer-preview' : 'subcontainer-preview disabled';
+    const countText = (GALLERIES[sub.id] && GALLERIES[sub.id].images)
+      ? `${GALLERIES[sub.id].images.length} imágenes`
+      : '';
+    el.innerHTML = `
+      <div class="${previewClass}">
+        <span class="sub-title">${sub.id} ${sub.name}</span>
+        ${countText ? `<span class="sub-count">${countText}</span>` : ''}
+      </div>
+    `;
+    if (sub.active && GALLERIES[sub.id]) {
+      el.addEventListener('click', () => {
+        currentGalleryId = sub.id;
+        document.getElementById('choice-title').textContent = sub.name;
+        document.getElementById('choice-modal').classList.remove('hidden');
+      });
+    }
+    container.appendChild(el);
+  });
+  showScreen('subs-screen');
+}
+
+document.getElementById('btn-back-subs').addEventListener('click', showHome);
 
 // --- Modal de elección ---
 const choiceModal = document.getElementById('choice-modal');
-const choiceTitle = document.getElementById('choice-title');
-
-document.querySelectorAll('.subcontainer').forEach(el => {
-  el.addEventListener('click', () => {
-    const id = el.dataset.gallery;
-    const name = el.dataset.name;
-    if (!GALLERIES[id]) return; // deshabilitado
-    currentGalleryId = id;
-    choiceTitle.textContent = name;
-    choiceModal.classList.remove('hidden');
-  });
-});
 
 document.getElementById('btn-close-choice').addEventListener('click', () => {
   choiceModal.classList.add('hidden');
@@ -105,14 +146,22 @@ document.getElementById('btn-next-img').addEventListener('click', () => {
   updateSlideshow();
 });
 
-// Click en la imagen también avanza
 document.getElementById('slideshow-img').addEventListener('click', () => {
   if (currentImages.length === 0) return;
   currentImgIndex = (currentImgIndex + 1) % currentImages.length;
   updateSlideshow();
 });
 
-document.getElementById('btn-back-gallery').addEventListener('click', showHome);
+// Volver desde gallery: a las subgalerías si hay main, si no a home
+document.getElementById('btn-back-gallery').addEventListener('click', () => {
+  if (currentMainId) {
+    const main = MAIN_GALLERIES.find(m => m.id === currentMainId);
+    if (main) openSubs(main);
+    else showHome();
+  } else {
+    showHome();
+  }
+});
 
 // --- Ver flashcards ---
 document.getElementById('btn-ver-flashcards').addEventListener('click', () => {
@@ -162,7 +211,6 @@ function startQuiz(blockCards, blockNum) {
 
 function showCard() {
   if (currentCardIndex >= currentBlockCards.length) {
-    // Fin del bloque
     document.getElementById('quiz-word').textContent = '¡Bloque completado!';
     document.getElementById('romaji-display').classList.add('hidden');
     document.getElementById('options-container').innerHTML = '';
@@ -178,7 +226,6 @@ function showCard() {
   romajiEl.textContent = card.romaji;
   romajiEl.classList.add('hidden');
 
-  // Opciones: 1 correcta + 3 distractores, mezcladas
   const options = shuffle([card.meaning, ...card.distractors.slice(0, 3)]);
   const optsContainer = document.getElementById('options-container');
   optsContainer.innerHTML = '';
@@ -197,25 +244,20 @@ function showCard() {
 }
 
 function handleAnswer(btn, isCorrect, card) {
-  // Deshabilitar todos
   document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
 
   if (isCorrect) {
     btn.classList.add('correct');
-    // Avanzar automáticamente tras breve delay
     setTimeout(() => {
       currentCardIndex++;
       showCard();
     }, 600);
   } else {
     btn.classList.add('wrong');
-    // Mostrar romaji + audio
     showRomajiAndSpeak(card);
-    // Marcar la correcta
     document.querySelectorAll('.option-btn').forEach(b => {
       if (b.textContent === card.meaning) b.classList.add('correct');
     });
-    // Mostrar botón siguiente
     document.getElementById('btn-next-card').classList.remove('hidden');
   }
 }
@@ -228,18 +270,14 @@ function showRomajiAndSpeak(card) {
   speakJapanese(card.word);
 }
 
-// Botón siguiente (solo aparece tras error)
 document.getElementById('btn-next-card').addEventListener('click', () => {
   currentCardIndex++;
   showCard();
 });
 
-// Click fuera del botón siguiente (en el área de la card) también muestra lectura
 document.querySelector('.quiz-card').addEventListener('click', (e) => {
-  // Si ya respondió mal y el romaji no está visible, o si click fuera de botones
   if (e.target.classList.contains('option-btn') || e.target.id === 'btn-next-card') return;
   if (currentCardIndex >= currentBlockCards.length) return;
-
   const card = currentBlockCards[currentCardIndex];
   if (!showingRomaji && card) {
     showRomajiAndSpeak(card);
@@ -251,7 +289,16 @@ document.getElementById('btn-back-to-blocks').addEventListener('click', () => {
   document.getElementById('blocks-container').classList.remove('hidden');
 });
 
-document.getElementById('btn-back-flash').addEventListener('click', showHome);
+// Volver desde flashcards: a subgalerías
+document.getElementById('btn-back-flash').addEventListener('click', () => {
+  if (currentMainId) {
+    const main = MAIN_GALLERIES.find(m => m.id === currentMainId);
+    if (main) openSubs(main);
+    else showHome();
+  } else {
+    showHome();
+  }
+});
 
 // Inicial
 showHome();
