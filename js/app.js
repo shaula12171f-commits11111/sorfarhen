@@ -35,6 +35,17 @@ if (window.speechSynthesis) {
   speechSynthesis.onvoiceschanged = () => {};
 }
 
+/** Devuelve la URL de portada de una subgalería.
+ *  Si cover está vacío/ausente, usa la primera imagen de images.
+ */
+function getCoverUrl(subId) {
+  const gal = GALLERIES[subId];
+  if (!gal) return null;
+  if (gal.cover && gal.cover.trim() !== '') return gal.cover;
+  if (gal.images && gal.images.length > 0) return gal.images[0];
+  return null;
+}
+
 // --- Navegación de pantallas ---
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -56,9 +67,11 @@ function renderMainGalleries() {
     const el = document.createElement('div');
     el.className = 'main-gallery-card' + (main.active ? '' : ' disabled');
     el.innerHTML = `
-      <span class="main-num">${main.id}</span>
-      <span class="main-name">${main.name}</span>
-      <span class="main-subs-count">${main.subs.length} subgalerías</span>
+      <div class="main-card-inner">
+        <span class="main-num">${main.id}</span>
+        <span class="main-name">${main.name}</span>
+        <span class="main-subs-count">${main.subs.length} subgalerías</span>
+      </div>
     `;
     if (main.active) {
       el.addEventListener('click', () => openSubs(main));
@@ -75,17 +88,33 @@ function openSubs(main) {
   container.innerHTML = '';
   main.subs.forEach(sub => {
     const el = document.createElement('div');
-    el.className = 'subcontainer';
-    const previewClass = sub.active ? 'subcontainer-preview' : 'subcontainer-preview disabled';
+    el.className = 'subcontainer' + (sub.active ? '' : ' is-disabled');
+
+    const coverUrl = getCoverUrl(sub.id);
     const countText = (GALLERIES[sub.id] && GALLERIES[sub.id].images)
       ? `${GALLERIES[sub.id].images.length} imágenes`
       : '';
+
+    // Nombre con el id al FINAL: "itsuki playera putona 2.1"
+    const displayName = `${sub.name} ${sub.id}`;
+
+    let coverHtml = '';
+    if (coverUrl) {
+      coverHtml = `<div class="sub-cover" style="background-image:url('${coverUrl}')"></div>`;
+    } else {
+      coverHtml = `<div class="sub-cover sub-cover-empty"></div>`;
+    }
+
     el.innerHTML = `
-      <div class="${previewClass}">
-        <span class="sub-title">${sub.id} ${sub.name}</span>
-        ${countText ? `<span class="sub-count">${countText}</span>` : ''}
+      <div class="subcontainer-preview${sub.active ? '' : ' disabled'}">
+        ${coverHtml}
+        <div class="sub-info">
+          <span class="sub-title">${displayName}</span>
+          ${countText ? `<span class="sub-count">${countText}</span>` : ''}
+        </div>
       </div>
     `;
+
     if (sub.active && GALLERIES[sub.id]) {
       el.addEventListener('click', () => {
         currentGalleryId = sub.id;
@@ -152,7 +181,6 @@ document.getElementById('slideshow-img').addEventListener('click', () => {
   updateSlideshow();
 });
 
-// Volver desde gallery: a las subgalerías si hay main, si no a home
 document.getElementById('btn-back-gallery').addEventListener('click', () => {
   if (currentMainId) {
     const main = MAIN_GALLERIES.find(m => m.id === currentMainId);
@@ -289,7 +317,6 @@ document.getElementById('btn-back-to-blocks').addEventListener('click', () => {
   document.getElementById('blocks-container').classList.remove('hidden');
 });
 
-// Volver desde flashcards: a subgalerías
 document.getElementById('btn-back-flash').addEventListener('click', () => {
   if (currentMainId) {
     const main = MAIN_GALLERIES.find(m => m.id === currentMainId);
