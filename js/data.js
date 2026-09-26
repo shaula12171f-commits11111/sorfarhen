@@ -5,10 +5,10 @@
 const MAIN_GALLERIES = [
   {
     id: "1",
-    name: "Historias cortas",
+    name: "quintiputas",
     active: true,
     subs: [
-      { id: "1.1", name: "itsuki playera putona", active: true },
+      { id: "1.1", name: "Próximamente", active: false },
       { id: "1.2", name: "Próximamente", active: false },
       { id: "1.3", name: "Próximamente", active: false },
       { id: "1.4", name: "Próximamente", active: false },
@@ -17,10 +17,10 @@ const MAIN_GALLERIES = [
   },
   {
     id: "2",
-    name: "Galería 2",
-    active: false,
+    name: "Historias cortas",
+    active: true,
     subs: [
-      { id: "2.1", name: "Próximamente", active: false },
+      { id: "2.1", name: "itsuki playera putona", active: true },
       { id: "2.2", name: "Próximamente", active: false },
       { id: "2.3", name: "Próximamente", active: false },
       { id: "2.4", name: "Próximamente", active: false },
@@ -125,23 +125,25 @@ const MAIN_GALLERIES = [
   }
 ];
 
-// Subgalerías con imágenes reales
+// Subgalerías con imágenes
+// cover: URL de portada (dejar vacío "" para usar automáticamente la primera imagen de images)
 const GALLERIES = {
-  "1.1": {
+  "2.1": {
     name: "itsuki playera putona",
+    cover: "",
     images: [
       "https://img.ge/i/wmODD63.png",
       "https://img.ge/i/oo9rL91.png"
     ]
   }
   // Añadir más así:
-  // "1.2": { name: "otra", images: ["url1", "url2"] }
+  // "1.1": { name: "algo", cover: "", images: ["url1", "url2"] }
 };
 
 // Flashcards por subgalería
 // Cada item: { word, romaji, meaning, distractors: [3 opciones incorrectas] }
 const FLASHCARDS = {
-  "1.1": [
+  "2.1": [
     {
       word: "見ないで",
       romaji: "minaite de",
