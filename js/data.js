@@ -127,6 +127,7 @@ const MAIN_GALLERIES = [
 
 // Subgalerías con imágenes
 // cover: URL de portada (dejar vacío "" para usar automáticamente la primera imagen de images)
+// TODO: añadir URLs de los nuevos paneles de habitación cuando el usuario las suba a un host
 const GALLERIES = {
   "2.1": {
     name: "itsuki playera putona",
@@ -136,14 +137,12 @@ const GALLERIES = {
       "https://img.ge/i/oo9rL91.png"
     ]
   }
-  // Añadir más así:
-  // "1.1": { name: "algo", cover: "", images: ["url1", "url2"] }
 };
 
 // Flashcards por subgalería
-// Cada item: { word, romaji, meaning, distractors: [3 opciones incorrectas] }
 const FLASHCARDS = {
   "2.1": [
+    // --- Panel playa (anteriores) ---
     {
       word: "見ないで",
       romaji: "minaite de",
@@ -199,22 +198,113 @@ const FLASHCARDS = {
       distractors: ["atrás", "lado", "arriba"]
     },
     {
-      word: "波が",
-      romaji: "nami ga",
-      meaning: "la ola (sujeto)",
-      distractors: ["el viento", "la arena", "el sol"]
-    },
-    {
       word: "お前",
       romaji: "omae",
       meaning: "tú (informal/rude)",
       distractors: ["yo", "él", "nosotros"]
     },
+    // --- Nuevos paneles habitación ---
     {
-      word: "持って来て",
-      romaji: "motte kite",
-      meaning: "traer (forma te)",
-      distractors: ["llevarse", "dejar", "romper"]
+      word: "結局",
+      romaji: "kekkyoku",
+      meaning: "al final / en definitiva",
+      distractors: ["al principio", "de repente", "quizás"]
+    },
+    {
+      word: "朝まで",
+      romaji: "asa made",
+      meaning: "hasta la mañana",
+      distractors: ["hasta la noche", "todo el día", "un momento"]
+    },
+    {
+      word: "しちゃった",
+      romaji: "shichatta",
+      meaning: "lo hicimos / acabamos haciéndolo",
+      distractors: ["lo dejamos", "lo olvidamos", "lo intentamos"]
+    },
+    {
+      word: "どうする",
+      romaji: "dō suru",
+      meaning: "¿qué hacemos?",
+      distractors: ["¿quién eres?", "¿dónde vas?", "¿cuándo es?"]
+    },
+    {
+      word: "もう一回",
+      romaji: "mō ikkai",
+      meaning: "una vez más",
+      distractors: ["la última vez", "nunca más", "dos veces"]
+    },
+    {
+      word: "学校",
+      romaji: "gakkō",
+      meaning: "escuela",
+      distractors: ["casa", "trabajo", "hospital"]
+    },
+    {
+      word: "遅れる",
+      romaji: "okureru",
+      meaning: "llegar tarde",
+      distractors: ["llegar temprano", "salir", "correr"]
+    },
+    {
+      word: "一緒に",
+      romaji: "issho ni",
+      meaning: "juntos",
+      distractors: ["solo", "después", "antes"]
+    },
+    {
+      word: "サボる",
+      romaji: "saboru",
+      meaning: "saltarse / faltar (a clase)",
+      distractors: ["estudiar", "llegar", "aprobar"]
+    },
+    {
+      word: "おいで",
+      romaji: "oide",
+      meaning: "ven aquí",
+      distractors: ["vete", "espera", "duerme"]
+    },
+    {
+      word: "いい加減に",
+      romaji: "ii kagen ni",
+      meaning: "ya basta / para de una vez",
+      distractors: ["por favor", "de acuerdo", "con cuidado"]
+    },
+    {
+      word: "やる気",
+      romaji: "yaruki",
+      meaning: "ganas / motivación",
+      distractors: ["sueño", "hambre", "miedo"]
+    },
+    {
+      word: "満々",
+      romaji: "manman",
+      meaning: "a tope / lleno de",
+      distractors: ["vacío", "poco", "a medias"]
+    },
+    {
+      word: "やめ",
+      romaji: "yame",
+      meaning: "para / deja de",
+      distractors: ["sigue", "empieza", "mira"]
+    },
+    {
+      word: "バレたら",
+      romaji: "baretara",
+      meaning: "si nos descubren",
+      distractors: ["si ganamos", "si llueve", "si terminamos"]
+    },
+    {
+      word: "あいつら",
+      romaji: "aitsura",
+      meaning: "ellos / ellas (informal)",
+      distractors: ["nosotros", "tú", "nadie"]
+    },
+    {
+      word: "みんなで",
+      romaji: "minna de",
+      meaning: "todos juntos / entre todos",
+      distractors: ["solo yo", "de dos", "nadie"]
     }
   ]
 };
