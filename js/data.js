@@ -1,6 +1,5 @@
 // Datos de galerías e imágenes
 // Estructura: 10 galerías principales, cada una con hasta 5 subgalerías
-// Fácil de ampliar: añade entradas a MAIN_GALLERIES, GALLERIES y FLASHCARDS
 
 const MAIN_GALLERIES = [
   {
@@ -21,7 +20,7 @@ const MAIN_GALLERIES = [
     active: true,
     subs: [
       { id: "2.1", name: "itsuki playera putona", active: true },
-      { id: "2.2", name: "Próximamente", active: false },
+      { id: "2.2", name: "ichika putona sexo de chill", active: true },
       { id: "2.3", name: "Próximamente", active: false },
       { id: "2.4", name: "Próximamente", active: false },
       { id: "2.5", name: "Próximamente", active: false }
@@ -125,9 +124,7 @@ const MAIN_GALLERIES = [
   }
 ];
 
-// Subgalerías con imágenes
-// cover: URL de portada (dejar vacío "" para usar automáticamente la primera imagen de images)
-// TODO: añadir URLs de los nuevos paneles de habitación cuando el usuario las suba a un host
+// cover vacío = usa images[0] como miniatura
 const GALLERIES = {
   "2.1": {
     name: "itsuki playera putona",
@@ -136,13 +133,19 @@ const GALLERIES = {
       "https://img.ge/i/wmODD63.png",
       "https://img.ge/i/oo9rL91.png"
     ]
+  },
+  "2.2": {
+    name: "ichika putona sexo de chill",
+    cover: "",
+    images: [
+      // Pega aquí las URLs públicas de los paneles de habitación
+    ]
   }
 };
 
-// Flashcards por subgalería
 const FLASHCARDS = {
+  // --- 2.1 playa / traje de baño ---
   "2.1": [
-    // --- Panel playa (anteriores) ---
     {
       word: "見ないで",
       romaji: "minaite de",
@@ -198,12 +201,27 @@ const FLASHCARDS = {
       distractors: ["atrás", "lado", "arriba"]
     },
     {
+      word: "波が",
+      romaji: "nami ga",
+      meaning: "la ola (sujeto)",
+      distractors: ["el viento", "la arena", "el sol"]
+    },
+    {
       word: "お前",
       romaji: "omae",
       meaning: "tú (informal/rude)",
       distractors: ["yo", "él", "nosotros"]
     },
-    // --- Nuevos paneles habitación ---
+    {
+      word: "持って来て",
+      romaji: "motte kite",
+      meaning: "traer (forma te)",
+      distractors: ["llevarse", "dejar", "romper"]
+    }
+  ],
+
+  // --- 2.2 ichika habitación ---
+  "2.2": [
     {
       word: "結局",
       romaji: "kekkyoku",
