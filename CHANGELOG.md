@@ -1,57 +1,42 @@
 # Changelog — Sorfarhen
 
-Registro de cambios con fecha/hora (UTC) y cómo volver a una versión anterior.
+## Cómo volver atrás
+
+https://github.com/shaula12171f-commits11111/sorfarhen/commits/main
+
+```bash
+git checkout <SHA>
+git revert <SHA>
+```
 
 ---
 
-## Cómo volver a una versión anterior (respaldo)
+## [2026-09-26 13:35 UTC] — Flashcards paneles habitación (2.1)
 
-Cada cambio se guarda como un **commit** en GitHub. Para restaurar una versión:
+**Commit:** `353260a315fd47ac0b1af4e4291a6079142f87c5`
 
-1. Ve a: https://github.com/shaula12171f-commits11111/sorfarhen/commits/main
-2. Busca el commit de la fecha que quieres.
-3. Abre el commit → botón **Browse files** (o copia el SHA).
-4. Opción fácil: en GitHub, usa **Revert** en el commit si está disponible.
-5. Desde terminal (si clonas el repo):
-   ```bash
-   git clone https://github.com/shaula12171f-commits11111/sorfarhen.git
-   cd sorfarhen
-   git checkout <SHA-del-commit>
-   git revert <SHA>
-   git push
-   ```
+### Cambios
+- Añadidas ~17 flashcards nuevas de los paneles de habitación (Ichika):
+  結局, 朝まで, しちゃった, どうする, もう一回, 学校, 遅れる, 一緒に, サボる, おいで, いい加減に, やる気, 満々, やめ, バレたら, あいつら, みんなで
+- Imágenes de galería: aún las 2 de playa (faltan URLs públicas de los nuevos paneles).
+
+### Archivos
+- `js/data.js`, `README.md`, `CHANGELOG.md`
 
 ---
 
 ## [2026-09-26 13:08 UTC] — Favicon letra H
 
-### Cambios
-- Favicon `favicon.svg` con la letra **H** rosa en la pestaña del navegador.
+---
 
-### Archivos
-- `favicon.svg`, `index.html`, `README.md`, `CHANGELOG.md`
+## [2026-09-26 12:51 UTC] — Botón de audio
 
 ---
 
-## [2026-09-26 12:51 UTC] — Botón de audio al lado de la palabra
-
-**Commits:** `8423687e`, `3bda42e9`, `3d6c3d98`
-
-### Cambios
-- Botón 🔊 junto a la palabra japonesa en cada flashcard.
+## [2026-09-26 12:41 UTC] — Estilo + swap galerías
 
 ---
 
-## [2026-09-26 12:41 UTC] — Estilo + swap galerías + portadas
+## Versión inicial
 
 ---
-
-## [2026-09-26 12:31 UTC] — Estructura 10 galerías
-
----
-
-## [2026-09-26 ~12:19 UTC] — Versión inicial
-
----
-
-*Se añade una entrada nueva en este archivo en cada cambio importante.*
