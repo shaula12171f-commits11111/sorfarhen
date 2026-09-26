@@ -17,9 +17,19 @@ Cada cambio se guarda como un **commit** en GitHub. Para restaurar una versión:
    git clone https://github.com/shaula12171f-commits11111/sorfarhen.git
    cd sorfarhen
    git checkout <SHA-del-commit>
-   git revert <SHA>   # o git reset --hard <SHA> (cuidado)
+   git revert <SHA>
    git push
    ```
+
+---
+
+## [2026-09-26 13:08 UTC] — Favicon letra H
+
+### Cambios
+- Favicon `favicon.svg` con la letra **H** rosa en la pestaña del navegador.
+
+### Archivos
+- `favicon.svg`, `index.html`, `README.md`, `CHANGELOG.md`
 
 ---
 
@@ -29,25 +39,14 @@ Cada cambio se guarda como un **commit** en GitHub. Para restaurar una versión:
 
 ### Cambios
 - Botón 🔊 junto a la palabra japonesa en cada flashcard.
-- Puedes escuchar la pronunciación en cualquier momento (no solo al fallar).
-- Estilo circular rosa, hover con glow.
-
-### Archivos tocados
-- `index.html`, `js/app.js`, `css/style.css`, `README.md`, `CHANGELOG.md`
 
 ---
 
-## [2026-09-26 12:41 UTC] — Estilo + swap galerías + portadas + nombre con id al final
-
-**Commits:** `b5acd2c5`, `f65142c1`, `2ddc8300`, `0f943a0b`
-
-### Cambios
-- Cards más redondeadas, miniaturas de portada, id al final del nombre.
-- Galería 1 = quintiputas, Galería 2 = Historias cortas (itsuki en 2.1).
+## [2026-09-26 12:41 UTC] — Estilo + swap galerías + portadas
 
 ---
 
-## [2026-09-26 12:31 UTC] — Estructura 10 galerías + imágenes reales
+## [2026-09-26 12:31 UTC] — Estructura 10 galerías
 
 ---
 
