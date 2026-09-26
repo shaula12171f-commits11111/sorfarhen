@@ -1,0 +1,394 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: #0f0f13;
+  color: #e8e8e8;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+header {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-bottom: 1px solid #2a2a40;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  color: #ff6b9d;
+  margin-bottom: 0.25rem;
+}
+
+header p {
+  color: #a0a0b0;
+  font-size: 0.95rem;
+}
+
+.screen {
+  display: none;
+  padding: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.screen.active {
+  display: block;
+}
+
+.container-block {
+  background: #1a1a24;
+  border-radius: 16px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #2a2a3a;
+}
+
+.container-block h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #ff8fab;
+}
+
+.subcontainers {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.subcontainer {
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.subcontainer:not(.disabled):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 107, 157, 0.25);
+}
+
+.subcontainer-preview {
+  background: linear-gradient(145deg, #252538, #1e1e2e);
+  padding: 1.25rem 0.75rem;
+  text-align: center;
+  border: 1px solid #33334a;
+  border-radius: 12px;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.subcontainer-preview.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.sub-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #f0f0f5;
+}
+
+.sub-count {
+  font-size: 0.75rem;
+  color: #8888a0;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1rem;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #1e1e2c;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  max-width: 340px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  border: 1px solid #33334a;
+}
+
+.modal-content h3 {
+  margin-bottom: 1.5rem;
+  color: #ff8fab;
+}
+
+.choice-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.btn {
+  padding: 0.85rem 1.25rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: #ff6b9d;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #ff4d88;
+}
+
+.btn-secondary {
+  background: #3a3a55;
+  color: #e8e8e8;
+}
+
+.btn-secondary:hover {
+  background: #4a4a6a;
+}
+
+.btn-close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.8rem;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.btn-back, .btn-back-small {
+  background: transparent;
+  border: 1px solid #444;
+  color: #ccc;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-back:hover, .btn-back-small:hover {
+  background: #2a2a3a;
+}
+
+/* Gallery */
+.gallery-header, .flashcards-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.gallery-header h2, .flashcards-header h2 {
+  font-size: 1.2rem;
+  color: #ff8fab;
+}
+
+.slideshow-container {
+  text-align: center;
+}
+
+#slideshow-img {
+  max-width: 100%;
+  max-height: 70vh;
+  border-radius: 12px;
+  border: 1px solid #333;
+  background: #111;
+  object-fit: contain;
+}
+
+.slideshow-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.slideshow-controls .btn {
+  background: #2a2a3a;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+}
+
+/* Flashcards / Blocks */
+.blocks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.block-card {
+  background: #1e1e2c;
+  border: 1px solid #33334a;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.block-card:hover {
+  background: #252538;
+}
+
+.block-card h3 {
+  font-size: 1.05rem;
+  color: #f0f0f5;
+}
+
+.block-card span {
+  font-size: 0.85rem;
+  color: #8888a0;
+}
+
+/* Quiz */
+.quiz-area {
+  margin-top: 0.5rem;
+}
+
+.quiz-area.hidden {
+  display: none;
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+#quiz-progress {
+  font-size: 0.9rem;
+  color: #a0a0b0;
+}
+
+.quiz-card {
+  background: #1a1a24;
+  border-radius: 16px;
+  padding: 1.75rem 1.25rem;
+  border: 1px solid #2a2a3a;
+  text-align: center;
+  min-height: 280px;
+}
+
+.quiz-word {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.romaji-display {
+  font-size: 1.1rem;
+  color: #ff8fab;
+  margin-bottom: 1.25rem;
+  min-height: 1.4em;
+}
+
+.romaji-display.hidden {
+  visibility: hidden;
+}
+
+.options-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 480px) {
+  .options-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.option-btn {
+  padding: 0.9rem 1rem;
+  background: #252538;
+  border: 2px solid #3a3a55;
+  border-radius: 10px;
+  color: #e8e8e8;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.option-btn:hover:not(:disabled) {
+  border-color: #ff6b9d;
+  background: #2e2e45;
+}
+
+.option-btn.correct {
+  background: #1a3a2a;
+  border-color: #2ecc71;
+  color: #2ecc71;
+}
+
+.option-btn.wrong {
+  background: #3a1a1a;
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+.option-btn:disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+
+.btn-next {
+  margin-top: 1.5rem;
+  background: #ff6b9d;
+  color: #fff;
+  width: 100%;
+  max-width: 220px;
+}
+
+.btn-next.hidden {
+  display: none;
+}
+
+.btn-next:hover {
+  background: #ff4d88;
+}
+
+/* Mobile tweaks */
+@media (max-width: 480px) {
+  .quiz-word {
+    font-size: 1.8rem;
+  }
+  .subcontainers {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
