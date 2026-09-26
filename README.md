@@ -20,8 +20,8 @@ Sistema de estudio de japonés con flashcards basado en imágenes de manga/henta
 | # | Galería | Subgalerías activas | Notas |
 |---|---------|---------------------|--------|
 | 1 | **quintiputas** | — | Subs vacías |
-| 2 | **Historias cortas** | **2.1** itsuki playera putona | Playa, 2 imágenes + 12 cards |
-| 2 | | **2.2** ichika putona sexo de chill | Habitación, 17 cards (faltan URLs de imágenes) |
+| 2 | **Historias cortas** | **2.1** itsuki playera putona | Playa, 2 imgs + 12 cards |
+| 2 | | **2.2** ichika putona sexo de chill | Habitación, 2 imgs + 17 cards |
 | 3–10 | Galería N | — | Próximamente |
 
 ### Imágenes 2.1
@@ -29,7 +29,8 @@ Sistema de estudio de japonés con flashcards basado en imágenes de manga/henta
 - https://img.ge/i/oo9rL91.png
 
 ### Imágenes 2.2
-Pendientes de URL pública (sube a img.ge y pégalas).
+- https://img.ge/i/6ot6t26.png
+- https://img.ge/i/dazsg51.png
 
 ## Favicon
 Letra **H** rosa.
