@@ -5,48 +5,42 @@ Sistema de estudio de japonés con flashcards basado en imágenes de manga/henta
 ## Cómo usarlo
 
 1. Abre la página en GitHub Pages (o localmente).
-2. En la **pantalla principal** verás **10 galerías**.
-3. Haz clic en una galería activa → aparecen sus **5 subgalerías** (con miniatura de portada).
-4. Haz clic en una subgalería activa → elige:
-   - **Ver hentai** → slideshow de imágenes.
-   - **Ver flashcards** → bloques de 10 palabras.
+2. **10 galerías** en la pantalla principal.
+3. Clic en una activa → **5 subgalerías**.
+4. Clic en subgalería → **Ver hentai** o **Ver flashcards**.
 
-### Flashcards (modo quiz)
+### Flashcards
 
-- Palabra en japonés + botón 🔊 para escuchar.
-- 4 opciones en español (1 correcta + 3 incorrectas).
+- Palabra en japonés + botón 🔊.
+- 4 opciones en español.
 - Correcta → siguiente. Incorrecta → romaji + audio.
 
 ## Estructura actual
 
-| # | Galería principal | Subgalerías activas | Estado |
-|---|-------------------|---------------------|--------|
-| 1 | **quintiputas** | — | Activa (subs vacías) |
-| 2 | **Historias cortas** | **itsuki playera putona 2.1** | Activa (~27 flashcards) |
+| # | Galería | Subgalerías activas | Notas |
+|---|---------|---------------------|--------|
+| 1 | **quintiputas** | — | Subs vacías |
+| 2 | **Historias cortas** | **2.1** itsuki playera putona | Playa, 2 imágenes + 12 cards |
+| 2 | | **2.2** ichika putona sexo de chill | Habitación, 17 cards (faltan URLs de imágenes) |
 | 3–10 | Galería N | — | Próximamente |
 
-### Imágenes de 2.1 (por ahora solo playa)
+### Imágenes 2.1
 - https://img.ge/i/wmODD63.png
 - https://img.ge/i/oo9rL91.png
 
-*Pendiente: URLs de los nuevos paneles de habitación (cuando se suban a un host).*
-
-### Portadas
-Campo `cover` vacío → usa `images[0]` como miniatura.
+### Imágenes 2.2
+Pendientes de URL pública (sube a img.ge y pégalas).
 
 ## Favicon
-Letra **H** rosa (`favicon.svg`).
+Letra **H** rosa.
 
-## Ampliar contenido
-
-Edita `js/data.js` (GALLERIES, FLASHCARDS, MAIN_GALLERIES).
+## Ampliar
+Edita `js/data.js`.
 
 ## GitHub Pages
-
-**Settings → Pages** → branch `main` / `/ (root)`.
+Settings → Pages → branch `main`.
 
 URL: `https://shaula12171f-commits11111.github.io/sorfarhen/`
 
 ## Historial
-
-Ver **[CHANGELOG.md](CHANGELOG.md)**.
+[CHANGELOG.md](CHANGELOG.md)
