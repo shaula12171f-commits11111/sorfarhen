@@ -1,6 +1,5 @@
 // Datos de galerías, openings e imágenes
 
-// Pantalla de entrada: dos categorías grandes
 const TOP_CATEGORIES = [
   {
     id: "hentai",
@@ -18,7 +17,6 @@ const TOP_CATEGORIES = [
   }
 ];
 
-// Openings (orden: primero Dark seeks light, luego Nanatsu OP1)
 const OPENINGS = [
   {
     id: "op-dark-seeks-light",
@@ -36,7 +34,6 @@ const OPENINGS = [
   }
 ];
 
-// Galerías hentai (igual que antes)
 const MAIN_GALLERIES = [
   {
     id: "1",
@@ -214,7 +211,6 @@ const FLASHCARDS = {
     { word: "みんなで", romaji: "minna de", meaning: "todos juntos / entre todos", distractors: ["solo yo", "de dos", "nadie"] }
   ],
 
-  // --- Opening: Dark seeks light ---
   "op-dark-seeks-light": [
     { word: "不平等", romaji: "fubyōdō", meaning: "desigualdad / injusto", distractors: ["igualdad", "paz", "libertad"] },
     { word: "生", romaji: "sei", meaning: "vida / existencia", distractors: ["muerte", "sueño", "tiempo"] },
@@ -238,26 +234,53 @@ const FLASHCARDS = {
     { word: "叫ぶ", romaji: "sakebu", meaning: "gritar / clamar", distractors: ["susurrar", "callar", "reír"] }
   ],
 
-  // --- Opening: Nanatsu no Taizai OP1 ---
+  // Nanatsu OP1 — vocabulario de TODA la letra (TV size)
   "op-nanatsu-1": [
+    { word: "鳴りやまぬ", romaji: "nariyamanu", meaning: "que no cesa / incesante", distractors: ["que para", "silencioso", "débil"] },
     { word: "愛", romaji: "ai", meaning: "amor", distractors: ["odio", "miedo", "ira"] },
-    { word: "叫ぶ", romaji: "sakebu", meaning: "gritar", distractors: ["susurrar", "callar", "cantar"] },
+    { word: "叫ぶ", romaji: "sakebu", meaning: "gritar / clamar", distractors: ["susurrar", "callar", "cantar"] },
+    { word: "すべて", romaji: "subete", meaning: "todo / todas las cosas", distractors: ["nada", "algo", "poco"] },
+    { word: "抱いて", romaji: "daite", meaning: "abrazar (forma te)", distractors: ["soltar", "empujar", "mirar"] },
+    { word: "ここ", romaji: "koko", meaning: "aquí", distractors: ["allí", "allá", "ningún sitio"] },
+    { word: "いる", romaji: "iru", meaning: "estar / existir (seres vivos)", distractors: ["ir", "venir", "dormir"] },
     { word: "光", romaji: "hikari", meaning: "luz", distractors: ["oscuridad", "sombra", "noche"] },
-    { word: "想い", romaji: "omoi", meaning: "sentimientos / deseos", distractors: ["pensamiento frío", "olvido", "silencio"] },
+    { word: "そこ", romaji: "soko", meaning: "ahí / ese lugar", distractors: ["aquí", "allá", "ningún sitio"] },
+    { word: "ある", romaji: "aru", meaning: "haber / existir (cosas)", distractors: ["no haber", "romper", "crear"] },
+    { word: "ゆずれない", romaji: "yuzurenai", meaning: "no ceder / innegociable", distractors: ["ceder", "abandonar", "olvidar"] },
+    { word: "想い", romaji: "omoi", meaning: "sentimientos / deseos", distractors: ["olvido", "silencio", "duda"] },
+    { word: "架けて", romaji: "kakete", meaning: "apostar / poner en juego", distractors: ["quitar", "guardar", "esconder"] },
     { word: "希望", romaji: "kibō", meaning: "esperanza", distractors: ["desesperación", "miedo", "duda"] },
+    { word: "果て", romaji: "hate", meaning: "extremo / confín / final", distractors: ["inicio", "centro", "mitad"] },
+    { word: "僕", romaji: "boku", meaning: "yo (informal masculino)", distractors: ["tú", "él", "nosotros"] },
+    { word: "生きる", romaji: "ikiru", meaning: "vivir", distractors: ["morir", "dormir", "huir"] },
     { word: "夢", romaji: "yume", meaning: "sueño", distractors: ["pesadilla", "realidad", "recuerdo"] },
+    { word: "つないだ", romaji: "tsunaida", meaning: "conectó / unió", distractors: ["rompió", "separó", "olvidó"] },
+    { word: "君", romaji: "kimi", meaning: "tú (cercano)", distractors: ["yo", "él", "ellos"] },
     { word: "始まり", romaji: "hajimari", meaning: "comienzo / inicio", distractors: ["final", "medio", "pausa"] },
+    { word: "いつか", romaji: "itsuka", meaning: "algún día", distractors: ["nunca", "siempre", "ahora"] },
+    { word: "僕ら", romaji: "bokura", meaning: "nosotros", distractors: ["vosotros", "ellos", "yo solo"] },
+    { word: "手", romaji: "te", meaning: "mano", distractors: ["pie", "ojo", "cabeza"] },
+    { word: "生み出す", romaji: "umidasu", meaning: "crear / dar a luz", distractors: ["destruir", "ocultar", "copiar"] },
     { word: "優しい", romaji: "yasashii", meaning: "amable / gentil", distractors: ["cruel", "frío", "duro"] },
     { word: "声", romaji: "koe", meaning: "voz", distractors: ["eco", "ruido", "silencio"] },
+    { word: "きっと", romaji: "kitto", meaning: "seguro / sin duda", distractors: ["quizás", "nunca", "apenas"] },
     { word: "世界", romaji: "sekai", meaning: "mundo", distractors: ["país", "ciudad", "casa"] },
+    { word: "変えられる", romaji: "kaerareru", meaning: "poder cambiar", distractors: ["romper", "congelar", "ignorar"] },
+    { word: "誰も", romaji: "dare mo", meaning: "nadie / cualquiera", distractors: ["todos juntos", "solo yo", "ellos"] },
+    { word: "ひとりきり", romaji: "hitorikiri", meaning: "completamente solo", distractors: ["acompañado", "en grupo", "en pareja"] },
+    { word: "起ち上がれ", romaji: "tachiagare", meaning: "levantarse (imperativo)", distractors: ["sentarse", "caer", "dormir"] },
+    { word: "しない", romaji: "shinai", meaning: "no hacer", distractors: ["hacer", "intentar", "poder"] },
+    { word: "たがいに", romaji: "tagai ni", meaning: "mutuamente / el uno al otro", distractors: ["solo", "contra", "sin"] },
+    { word: "伸ばして", romaji: "nobashite", meaning: "extender / alcanzar (forma te)", distractors: ["retirar", "cerrar", "esconder"] },
     { word: "限界", romaji: "genkai", meaning: "límite", distractors: ["inicio", "centro", "infinito"] },
+    { word: "越えた", romaji: "koeta", meaning: "superó / cruzó", distractors: ["quedó", "cayó", "paró"] },
     { word: "明日", romaji: "ashita", meaning: "mañana", distractors: ["ayer", "hoy", "noche"] },
-    { word: "誕めぬ", romaji: "akiramenu", meaning: "no rendirse", distractors: ["rendirse", "huir", "olvidar"] },
+    { word: "ぶつかりあって", romaji: "butsukariatte", meaning: "chocando / enfrentándose", distractors: ["evitándose", "ignorándose", "huyendo"] },
+    { word: "わかりあう", romaji: "wakariau", meaning: "entenderse mutuamente", distractors: ["pelear", "ignorar", "odiar"] },
+    { word: "つくりだす", romaji: "tsukuridasu", meaning: "crear / producir", distractors: ["destruir", "copiar", "ocultar"] },
+    { word: "認めぬ", romaji: "akiramenu", meaning: "no rendirse", distractors: ["rendirse", "huir", "olvidar"] },
     { word: "悲しみ", romaji: "kanashimi", meaning: "tristeza", distractors: ["alegría", "ira", "miedo"] },
-    { word: "怒り", romaji: "ikari", meaning: "ira / rabia", distractors: ["paz", "alegría", "amor"] },
-    { word: "手", romaji: "te", meaning: "mano", distractors: ["pie", "ojo", "cabeza"] },
-    { word: "生きる", romaji: "ikiru", meaning: "vivir", distractors: ["morir", "dormir", "correr"] },
-    { word: "越えた", romaji: "koeta", meaning: "superó / cruzó", distractors: ["quedó", "cayó", "paró"] }
+    { word: "怒り", romaji: "ikari", meaning: "ira / rabia", distractors: ["paz", "alegría", "amor"] }
   ]
 };
 
