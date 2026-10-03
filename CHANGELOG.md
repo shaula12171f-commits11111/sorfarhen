@@ -11,15 +11,18 @@ git revert <SHA>
 
 ---
 
-## [2026-10-03 21:01 UTC] — Openings en orden de la letra
+## [2026-10-03 21:10 UTC] — Tsubasa (3er opening)
 
 ### Cambios
-- En **Openings**, las flashcards van en el **orden de la canción** (ya no se mezclan).
-- Las 4 opciones de respuesta sí se siguen mezclando.
-- Hentai: se mantiene el orden aleatorio al estudiar.
+- Añadido **ツバサ** (Nanahoshi / Mushoku Tensei, cover de UNDERGRAPH) como 3.er opening.
+- ~95 flashcards en orden de la letra.
 
 ### Archivos
-- `js/app.js`, `CHANGELOG.md`
+- `js/data.js`, `README.md`, `CHANGELOG.md`
+
+---
+
+## [2026-10-03 21:01 UTC] — Openings en orden de la letra
 
 ---
 
