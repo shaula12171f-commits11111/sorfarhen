@@ -11,18 +11,22 @@ git revert <SHA>
 
 ---
 
-## [2026-10-03 20:50 UTC] — Galerías hentai + Openings
+## [2026-10-03 20:58 UTC] — Nanatsu OP1: letra completa
 
 ### Cambios
-- Pantalla de entrada dividida en **Galerías hentai** y **Openings**.
-- **Openings** empieza con:
-  1. **Dark seeks light** (sicario isekai) — 20 flashcards
-  2. **熱情のスペクトラム** (Nanatsu no Taizai OP1) — 18 flashcards
-- Clic en un opening → flashcards directo.
+- Flashcards de **熱情のスペクトラム** ampliadas a **toda la letra** (~45 palabras).
+- Corregido 認めぬ (antes mal escrito).
 
 ### Archivos
-- `js/data.js`, `js/app.js`, `index.html`, `css/style.css`, `README.md`, `CHANGELOG.md`
+- `js/data.js`, `README.md`, `CHANGELOG.md`
 
 ---
 
-## [2026-09-26] — Imágenes 2.2, 2.1/2.2 split, favicon H, audio, etc.
+## [2026-10-03 20:50 UTC] — Galerías hentai + Openings
+
+- Home dividido en **Galerías hentai** y **Openings**.
+- Openings: Dark seeks light + Nanatsu OP1.
+
+---
+
+## [2026-09-26] — Imágenes 2.2, favicon, audio, etc.
