@@ -11,27 +11,18 @@ git revert <SHA>
 
 ---
 
-## [2026-09-26 13:40 UTC] — Imágenes 2.2
+## [2026-10-03 20:50 UTC] — Galerías hentai + Openings
 
 ### Cambios
-- Galería **2.2** con 2 imágenes:
-  - https://img.ge/i/6ot6t26.png
-  - https://img.ge/i/dazsg51.png
-- Portada de 2.2 = primera imagen (automático).
+- Pantalla de entrada dividida en **Galerías hentai** y **Openings**.
+- **Openings** empieza con:
+  1. **Dark seeks light** (sicario isekai) — 20 flashcards
+  2. **熱情のスペクトラム** (Nanatsu no Taizai OP1) — 18 flashcards
+- Clic en un opening → flashcards directo.
 
 ### Archivos
-- `js/data.js`, `README.md`, `CHANGELOG.md`
+- `js/data.js`, `js/app.js`, `index.html`, `css/style.css`, `README.md`, `CHANGELOG.md`
 
 ---
 
-## [2026-09-26 13:39 UTC] — 2.2 ichika; 2.1 restaurada
-
----
-
-## [2026-09-26 13:08 UTC] — Favicon H
-
----
-
-## Anteriores
-
-Botón audio, estilo, estructura 10 galerías, etc.
+## [2026-09-26] — Imágenes 2.2, 2.1/2.2 split, favicon H, audio, etc.
