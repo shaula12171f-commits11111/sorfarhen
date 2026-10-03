@@ -51,7 +51,6 @@ header p {
   letter-spacing: 0.01em;
 }
 
-/* ========== Top categories (home) ========== */
 .top-categories {
   display: grid;
   grid-template-columns: 1fr;
@@ -111,7 +110,6 @@ header p {
   color: #8a8a9e;
 }
 
-/* ========== Openings list ========== */
 .openings-list {
   display: flex;
   flex-direction: column;
@@ -178,7 +176,6 @@ header p {
   color: #7a7a90;
 }
 
-/* ========== Main galleries ========== */
 .main-galleries {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
@@ -238,7 +235,6 @@ header p {
   margin-top: 0.15rem;
 }
 
-/* ========== Subcontainers ========== */
 .subs-header {
   display: flex;
   align-items: center;
@@ -342,7 +338,6 @@ header p {
   color: #8888a0;
 }
 
-/* ========== Modal ========== */
 .modal {
   position: fixed;
   inset: 0;
@@ -418,6 +413,17 @@ header p {
   background: #3a3a58;
 }
 
+.btn-ghost {
+  background: transparent;
+  color: #aaa;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ddd;
+}
+
 .btn-close {
   position: absolute;
   top: 0.7rem;
@@ -449,18 +455,27 @@ header p {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* ========== Gallery / Slideshow ========== */
 .gallery-header, .flashcards-header {
   display: flex;
   align-items: center;
   gap: 1rem;
   margin-bottom: 1.25rem;
+  flex-wrap: wrap;
 }
 
 .gallery-header h2, .flashcards-header h2 {
   font-size: 1.2rem;
   color: #ff8fab;
   font-weight: 600;
+  flex: 1;
+}
+
+.quiz-progress-badge {
+  font-size: 0.88rem;
+  color: #a0a0b0;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
 }
 
 .slideshow-container {
@@ -497,7 +512,6 @@ header p {
   background: #35354e;
 }
 
-/* ========== Flashcards ========== */
 .blocks-container {
   display: flex;
   flex-direction: column;
@@ -533,26 +547,6 @@ header p {
   color: #8888a0;
 }
 
-.quiz-area {
-  margin-top: 0.5rem;
-}
-
-.quiz-area.hidden {
-  display: none;
-}
-
-.quiz-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.25rem;
-}
-
-#quiz-progress {
-  font-size: 0.9rem;
-  color: #a0a0b0;
-}
-
 .quiz-card {
   background: linear-gradient(165deg, #1c1c2c 0%, #161622 100%);
   border-radius: 18px;
@@ -561,6 +555,10 @@ header p {
   text-align: center;
   min-height: 290px;
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+}
+
+.quiz-card.hidden {
+  display: none;
 }
 
 .word-row {
@@ -680,6 +678,43 @@ header p {
 
 .btn-next:hover {
   background: linear-gradient(135deg, #ff4d88, #ff3a7a);
+}
+
+/* Fin del mazo */
+.block-done {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(165deg, #1c1c2c 0%, #161622 100%);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 107, 157, 0.2);
+}
+
+.block-done.hidden {
+  display: none;
+}
+
+.done-title {
+  font-size: 1.5rem;
+  color: #ff8fab;
+  margin-bottom: 0.5rem;
+}
+
+.done-subtitle {
+  color: #8a8a9e;
+  margin-bottom: 1.75rem;
+  font-size: 0.95rem;
+}
+
+.done-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.done-buttons .btn.hidden {
+  display: none;
 }
 
 @media (max-width: 480px) {
