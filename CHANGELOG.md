@@ -11,25 +11,24 @@ git revert <SHA>
 
 ---
 
-## [2026-10-03 21:10 UTC] — Tsubasa (3er opening)
+## [2026-10-03 21:18 UTC] — Quiz: pantalla dedicada + fin de mazo
 
 ### Cambios
-- Añadido **ツバサ** (Nanahoshi / Mushoku Tensei, cover de UNDERGRAPH) como 3.er opening.
-- ~95 flashcards en orden de la letra.
+- Al entrar a un bloque, se abre **pantalla de quiz** (ya no se ven los bloques abajo).
+- Al terminar el mazo:
+  - **Repetir mazo**
+  - **Siguiente mazo** (si hay más)
+  - **Ver todos los bloques**
 
 ### Archivos
-- `js/data.js`, `README.md`, `CHANGELOG.md`
+- `index.html`, `js/app.js`, `css/style.css`, `CHANGELOG.md`
+
+---
+
+## [2026-10-03 21:10 UTC] — Tsubasa (3er opening)
 
 ---
 
 ## [2026-10-03 21:01 UTC] — Openings en orden de la letra
-
----
-
-## [2026-10-03 20:58 UTC] — Nanatsu OP1 letra completa
-
----
-
-## [2026-10-03 20:50 UTC] — Galerías hentai + Openings
 
 ---
