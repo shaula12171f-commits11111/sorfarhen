@@ -7,8 +7,12 @@ let currentImgIndex = 0;
 let currentCards = [];
 let currentCardIndex = 0;
 let currentBlockCards = [];
+let currentBlockNum = 1;
+let currentBlockStart = 0;
+let currentBlockEnd = 0;
+let totalBlocks = 1;
 let showingRomaji = false;
-let flashBackTarget = 'home'; // 'home' | 'hentai' | 'openings' | 'subs'
+let flashBackTarget = 'home';
 
 function shuffle(array) {
   const arr = [...array];
@@ -48,7 +52,6 @@ function showScreen(id) {
   document.getElementById(id).classList.add('active');
 }
 
-// --- Home: 2 categorías ---
 function showHome() {
   showScreen('home-screen');
   currentGalleryId = null;
@@ -78,7 +81,6 @@ function renderTopCategories() {
   });
 }
 
-// --- Galerías hentai ---
 function openHentai() {
   flashBackTarget = 'hentai';
   renderMainGalleries();
@@ -98,16 +100,13 @@ function renderMainGalleries() {
         <span class="main-subs-count">${main.subs.length} subgalerías</span>
       </div>
     `;
-    if (main.active) {
-      el.addEventListener('click', () => openSubs(main));
-    }
+    if (main.active) el.addEventListener('click', () => openSubs(main));
     container.appendChild(el);
   });
 }
 
 document.getElementById('btn-back-hentai').addEventListener('click', showHome);
 
-// --- Openings ---
 function openOpenings() {
   flashBackTarget = 'openings';
   renderOpenings();
@@ -141,7 +140,6 @@ function renderOpenings() {
 
 document.getElementById('btn-back-openings').addEventListener('click', showHome);
 
-// --- Subgalerías hentai ---
 function openSubs(main) {
   currentMainId = main.id;
   flashBackTarget = 'subs';
@@ -153,10 +151,9 @@ function openSubs(main) {
     el.className = 'subcontainer' + (sub.active ? '' : ' is-disabled');
     const coverUrl = getCoverUrl(sub.id);
     const countText = (GALLERIES[sub.id] && GALLERIES[sub.id].images)
-      ? `${GALLERIES[sub.id].images.length} imágenes`
-      : '';
+      ? `${GALLERIES[sub.id].images.length} imágenes` : '';
     const displayName = `${sub.name} ${sub.id}`;
-    let coverHtml = coverUrl
+    const coverHtml = coverUrl
       ? `<div class="sub-cover" style="background-image:url('${coverUrl}')"></div>`
       : `<div class="sub-cover sub-cover-empty"></div>`;
     el.innerHTML = `
@@ -182,7 +179,6 @@ function openSubs(main) {
 
 document.getElementById('btn-back-subs').addEventListener('click', () => openHentai());
 
-// --- Modal ---
 const choiceModal = document.getElementById('choice-modal');
 document.getElementById('btn-close-choice').addEventListener('click', () => {
   choiceModal.classList.add('hidden');
@@ -242,7 +238,6 @@ document.getElementById('btn-back-gallery').addEventListener('click', () => {
   } else openHentai();
 });
 
-// --- Flashcards ---
 document.getElementById('btn-ver-flashcards').addEventListener('click', () => {
   choiceModal.classList.add('hidden');
   flashBackTarget = 'subs';
@@ -254,8 +249,6 @@ function openFlashcards(id, title) {
   currentCards = cards;
   currentGalleryId = id;
   document.getElementById('flash-title').textContent = title || id;
-  document.getElementById('quiz-area').classList.add('hidden');
-  document.getElementById('blocks-container').classList.remove('hidden');
   renderBlocks(cards);
   showScreen('flashcards-screen');
 }
@@ -264,37 +257,41 @@ function renderBlocks(cards) {
   const container = document.getElementById('blocks-container');
   container.innerHTML = '';
   const blockSize = 10;
-  const numBlocks = Math.ceil(cards.length / blockSize) || 1;
-  for (let i = 0; i < numBlocks; i++) {
+  totalBlocks = Math.ceil(cards.length / blockSize) || 1;
+  for (let i = 0; i < totalBlocks; i++) {
     const start = i * blockSize;
     const end = Math.min(start + blockSize, cards.length);
     const count = end - start;
     const blockEl = document.createElement('div');
     blockEl.className = 'block-card';
     blockEl.innerHTML = `<h3>Bloque ${i + 1}</h3><span>${count} palabras</span>`;
-    blockEl.addEventListener('click', () => startQuiz(cards.slice(start, end), i + 1));
+    blockEl.addEventListener('click', () => startQuiz(i + 1));
     container.appendChild(blockEl);
   }
 }
 
-function startQuiz(blockCards, blockNum) {
-  // Openings: orden de la letra. Hentai: mezclado.
+function startQuiz(blockNum) {
+  const blockSize = 10;
+  currentBlockNum = blockNum;
+  currentBlockStart = (blockNum - 1) * blockSize;
+  currentBlockEnd = Math.min(currentBlockStart + blockSize, currentCards.length);
+  const slice = currentCards.slice(currentBlockStart, currentBlockEnd);
   const isOpening = String(currentGalleryId || '').startsWith('op-');
-  currentBlockCards = isOpening ? [...blockCards] : shuffle(blockCards);
+  currentBlockCards = isOpening ? [...slice] : shuffle(slice);
   currentCardIndex = 0;
-  document.getElementById('blocks-container').classList.add('hidden');
-  document.getElementById('quiz-area').classList.remove('hidden');
-  document.getElementById('quiz-progress').textContent = `Bloque ${blockNum}`;
+
+  document.getElementById('quiz-block-title').textContent = `Bloque ${blockNum}`;
+  document.getElementById('block-done').classList.add('hidden');
+  document.querySelector('.quiz-card').classList.remove('hidden');
+  document.getElementById('btn-speak').style.display = 'inline-flex';
+
+  showScreen('quiz-screen');
   showCard();
 }
 
 function showCard() {
   if (currentCardIndex >= currentBlockCards.length) {
-    document.getElementById('quiz-word').textContent = '¡Bloque completado!';
-    document.getElementById('romaji-display').classList.add('hidden');
-    document.getElementById('options-container').innerHTML = '';
-    document.getElementById('btn-next-card').classList.add('hidden');
-    document.getElementById('btn-speak').style.display = 'none';
+    showBlockDone();
     return;
   }
   const card = currentBlockCards[currentCardIndex];
@@ -304,7 +301,6 @@ function showCard() {
   const romajiEl = document.getElementById('romaji-display');
   romajiEl.textContent = card.romaji;
   romajiEl.classList.add('hidden');
-  // Las opciones sí se mezclan (1 correcta + 3 incorrectas)
   const options = shuffle([card.meaning, ...card.distractors.slice(0, 3)]);
   const optsContainer = document.getElementById('options-container');
   optsContainer.innerHTML = '';
@@ -318,6 +314,23 @@ function showCard() {
   document.getElementById('btn-next-card').classList.add('hidden');
   document.getElementById('quiz-progress').textContent =
     `${currentCardIndex + 1} / ${currentBlockCards.length}`;
+}
+
+function showBlockDone() {
+  document.querySelector('.quiz-card').classList.add('hidden');
+  const done = document.getElementById('block-done');
+  done.classList.remove('hidden');
+  document.getElementById('done-subtitle').textContent =
+    `Bloque ${currentBlockNum} de ${totalBlocks}`;
+  document.getElementById('quiz-progress').textContent = 'Listo';
+
+  const nextBtn = document.getElementById('btn-next-block');
+  if (currentBlockNum < totalBlocks) {
+    nextBtn.classList.remove('hidden');
+    nextBtn.textContent = `Siguiente mazo (Bloque ${currentBlockNum + 1})`;
+  } else {
+    nextBtn.classList.add('hidden');
+  }
 }
 
 function handleAnswer(btn, isCorrect, card) {
@@ -366,8 +379,19 @@ document.querySelector('.quiz-card').addEventListener('click', (e) => {
 });
 
 document.getElementById('btn-back-to-blocks').addEventListener('click', () => {
-  document.getElementById('quiz-area').classList.add('hidden');
-  document.getElementById('blocks-container').classList.remove('hidden');
+  showScreen('flashcards-screen');
+});
+
+document.getElementById('btn-repeat-block').addEventListener('click', () => {
+  startQuiz(currentBlockNum);
+});
+
+document.getElementById('btn-next-block').addEventListener('click', () => {
+  if (currentBlockNum < totalBlocks) startQuiz(currentBlockNum + 1);
+});
+
+document.getElementById('btn-done-to-blocks').addEventListener('click', () => {
+  showScreen('flashcards-screen');
 });
 
 document.getElementById('btn-back-flash').addEventListener('click', () => {
