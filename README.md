@@ -6,13 +6,14 @@ Sistema de estudio de japonés con flashcards (manga/hentai + openings de anime)
 
 1. Al abrir: elige **Galerías hentai** u **Openings**.
 2. **Galerías hentai** → galerías → subgalerías → Ver hentai / Ver flashcards.
-3. **Openings** → lista de openings → flashcards del vocabulario de la letra.
+3. **Openings** → lista de openings → flashcards del vocabulario de la letra (en orden).
 
 ### Flashcards
 
 - Palabra en japonés + botón 🔊.
 - 4 opciones en español.
 - Correcta → siguiente. Incorrecta → romaji + audio.
+- En openings: orden de la canción.
 
 ## Estructura actual
 
@@ -20,11 +21,12 @@ Sistema de estudio de japonés con flashcards (manga/hentai + openings de anime)
 | Sección | Contenido |
 |---------|-----------|
 | **Galerías hentai** | quintiputas, Historias cortas, … |
-| **Openings** | Dark seeks light, 熱情のスペクトラム |
+| **Openings** | Dark seeks light, 熱情のスペクトラム, ツバサ |
 
 ### Openings
 1. **Dark seeks light** — Sicario isekai · 20 palabras
-2. **熱情のスペクトラム** — Nanatsu no Taizai OP1 · **~45 palabras** (letra completa)
+2. **熱情のスペクトラム** — Nanatsu no Taizai OP1 · ~45 palabras
+3. **ツバサ** — Mushoku Tensei (Nanahoshi cover) · ~95 palabras
 
 ### Hentai (Historias cortas)
 | Sub | Nombre | Notas |
@@ -36,8 +38,6 @@ Sistema de estudio de japonés con flashcards (manga/hentai + openings de anime)
 Edita `js/data.js`.
 
 ## GitHub Pages
-Settings → Pages → branch `main`.
-
 URL: `https://shaula12171f-commits11111.github.io/sorfarhen/`
 
 ## Historial
