@@ -14,26 +14,42 @@
   </header>
 
   <main id="main-content">
-    <!-- Pantalla principal: 10 galerías -->
+    <!-- Pantalla de entrada: 2 categorías -->
     <section id="home-screen" class="screen active">
-      <h2 class="section-title">Galerías principales</h2>
-      <div id="main-galleries" class="main-galleries">
-        <!-- Se rellena con JS desde MAIN_GALLERIES -->
+      <h2 class="section-title">¿Qué quieres estudiar?</h2>
+      <div id="top-categories" class="top-categories">
+        <!-- Se rellena con JS -->
       </div>
     </section>
 
-    <!-- Pantalla de subgalerías (5 por cada principal) -->
+    <!-- Galerías hentai (las 10 principales) -->
+    <section id="hentai-screen" class="screen">
+      <div class="subs-header">
+        <button id="btn-back-hentai" class="btn-back">← Volver</button>
+        <h2>Galerías hentai</h2>
+      </div>
+      <div id="main-galleries" class="main-galleries"></div>
+    </section>
+
+    <!-- Lista de openings -->
+    <section id="openings-screen" class="screen">
+      <div class="subs-header">
+        <button id="btn-back-openings" class="btn-back">← Volver</button>
+        <h2>Openings</h2>
+      </div>
+      <div id="openings-list" class="openings-list"></div>
+    </section>
+
+    <!-- Subgalerías hentai -->
     <section id="subs-screen" class="screen">
       <div class="subs-header">
         <button id="btn-back-subs" class="btn-back">← Volver</button>
         <h2 id="subs-title"></h2>
       </div>
-      <div id="sub-galleries" class="subcontainers">
-        <!-- Se rellena con JS -->
-      </div>
+      <div id="sub-galleries" class="subcontainers"></div>
     </section>
 
-    <!-- Modal de elección -->
+    <!-- Modal de elección (hentai) -->
     <div id="choice-modal" class="modal hidden">
       <div class="modal-content">
         <h3 id="choice-title">¿Qué quieres hacer?</h3>
@@ -45,7 +61,7 @@
       </div>
     </div>
 
-    <!-- Pantalla de galería / slideshow -->
+    <!-- Slideshow -->
     <section id="gallery-screen" class="screen">
       <div class="gallery-header">
         <button id="btn-back-gallery" class="btn-back">← Volver</button>
@@ -61,7 +77,7 @@
       </div>
     </section>
 
-    <!-- Pantalla de flashcards -->
+    <!-- Flashcards -->
     <section id="flashcards-screen" class="screen">
       <div class="flashcards-header">
         <button id="btn-back-flash" class="btn-back">← Volver</button>
