@@ -14,15 +14,11 @@
   </header>
 
   <main id="main-content">
-    <!-- Pantalla de entrada: 2 categorías -->
     <section id="home-screen" class="screen active">
       <h2 class="section-title">¿Qué quieres estudiar?</h2>
-      <div id="top-categories" class="top-categories">
-        <!-- Se rellena con JS -->
-      </div>
+      <div id="top-categories" class="top-categories"></div>
     </section>
 
-    <!-- Galerías hentai (las 10 principales) -->
     <section id="hentai-screen" class="screen">
       <div class="subs-header">
         <button id="btn-back-hentai" class="btn-back">← Volver</button>
@@ -31,7 +27,6 @@
       <div id="main-galleries" class="main-galleries"></div>
     </section>
 
-    <!-- Lista de openings -->
     <section id="openings-screen" class="screen">
       <div class="subs-header">
         <button id="btn-back-openings" class="btn-back">← Volver</button>
@@ -40,7 +35,6 @@
       <div id="openings-list" class="openings-list"></div>
     </section>
 
-    <!-- Subgalerías hentai -->
     <section id="subs-screen" class="screen">
       <div class="subs-header">
         <button id="btn-back-subs" class="btn-back">← Volver</button>
@@ -49,7 +43,6 @@
       <div id="sub-galleries" class="subcontainers"></div>
     </section>
 
-    <!-- Modal de elección (hentai) -->
     <div id="choice-modal" class="modal hidden">
       <div class="modal-content">
         <h3 id="choice-title">¿Qué quieres hacer?</h3>
@@ -61,7 +54,6 @@
       </div>
     </div>
 
-    <!-- Slideshow -->
     <section id="gallery-screen" class="screen">
       <div class="gallery-header">
         <button id="btn-back-gallery" class="btn-back">← Volver</button>
@@ -77,26 +69,39 @@
       </div>
     </section>
 
-    <!-- Flashcards -->
+    <!-- Lista de bloques (mazos) -->
     <section id="flashcards-screen" class="screen">
       <div class="flashcards-header">
         <button id="btn-back-flash" class="btn-back">← Volver</button>
         <h2 id="flash-title"></h2>
       </div>
       <div id="blocks-container" class="blocks-container"></div>
-      <div id="quiz-area" class="quiz-area hidden">
-        <div class="quiz-header">
-          <button id="btn-back-to-blocks" class="btn-back-small">← Bloques</button>
-          <span id="quiz-progress"></span>
+    </section>
+
+    <!-- Pantalla de quiz (mazo activo) -->
+    <section id="quiz-screen" class="screen">
+      <div class="flashcards-header">
+        <button id="btn-back-to-blocks" class="btn-back">← Bloques</button>
+        <h2 id="quiz-block-title">Bloque</h2>
+        <span id="quiz-progress" class="quiz-progress-badge"></span>
+      </div>
+      <div class="quiz-card">
+        <div class="word-row">
+          <h2 id="quiz-word" class="quiz-word"></h2>
+          <button id="btn-speak" class="btn-speak" title="Escuchar" aria-label="Escuchar palabra">🔊</button>
         </div>
-        <div class="quiz-card">
-          <div class="word-row">
-            <h2 id="quiz-word" class="quiz-word"></h2>
-            <button id="btn-speak" class="btn-speak" title="Escuchar" aria-label="Escuchar palabra">🔊</button>
-          </div>
-          <div id="romaji-display" class="romaji-display hidden"></div>
-          <div id="options-container" class="options-container"></div>
-          <button id="btn-next-card" class="btn btn-next hidden">Siguiente</button>
+        <div id="romaji-display" class="romaji-display hidden"></div>
+        <div id="options-container" class="options-container"></div>
+        <button id="btn-next-card" class="btn btn-next hidden">Siguiente</button>
+      </div>
+      <!-- Fin del mazo -->
+      <div id="block-done" class="block-done hidden">
+        <h2 class="done-title">¡Mazo completado!</h2>
+        <p id="done-subtitle" class="done-subtitle"></p>
+        <div class="done-buttons">
+          <button id="btn-repeat-block" class="btn btn-secondary">Repetir mazo</button>
+          <button id="btn-next-block" class="btn btn-primary">Siguiente mazo</button>
+          <button id="btn-done-to-blocks" class="btn btn-ghost">Ver todos los bloques</button>
         </div>
       </div>
     </section>
