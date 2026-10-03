@@ -278,7 +278,9 @@ function renderBlocks(cards) {
 }
 
 function startQuiz(blockCards, blockNum) {
-  currentBlockCards = shuffle(blockCards);
+  // Openings: orden de la letra. Hentai: mezclado.
+  const isOpening = String(currentGalleryId || '').startsWith('op-');
+  currentBlockCards = isOpening ? [...blockCards] : shuffle(blockCards);
   currentCardIndex = 0;
   document.getElementById('blocks-container').classList.add('hidden');
   document.getElementById('quiz-area').classList.remove('hidden');
@@ -302,6 +304,7 @@ function showCard() {
   const romajiEl = document.getElementById('romaji-display');
   romajiEl.textContent = card.romaji;
   romajiEl.classList.add('hidden');
+  // Las opciones sí se mezclan (1 correcta + 3 incorrectas)
   const options = shuffle([card.meaning, ...card.distractors.slice(0, 3)]);
   const optsContainer = document.getElementById('options-container');
   optsContainer.innerHTML = '';
