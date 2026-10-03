@@ -11,22 +11,22 @@ git revert <SHA>
 
 ---
 
-## [2026-10-03 20:58 UTC] — Nanatsu OP1: letra completa
+## [2026-10-03 21:01 UTC] — Openings en orden de la letra
 
 ### Cambios
-- Flashcards de **熱情のスペクトラム** ampliadas a **toda la letra** (~45 palabras).
-- Corregido 認めぬ (antes mal escrito).
+- En **Openings**, las flashcards van en el **orden de la canción** (ya no se mezclan).
+- Las 4 opciones de respuesta sí se siguen mezclando.
+- Hentai: se mantiene el orden aleatorio al estudiar.
 
 ### Archivos
-- `js/data.js`, `README.md`, `CHANGELOG.md`
+- `js/app.js`, `CHANGELOG.md`
+
+---
+
+## [2026-10-03 20:58 UTC] — Nanatsu OP1 letra completa
 
 ---
 
 ## [2026-10-03 20:50 UTC] — Galerías hentai + Openings
 
-- Home dividido en **Galerías hentai** y **Openings**.
-- Openings: Dark seeks light + Nanatsu OP1.
-
 ---
-
-## [2026-09-26] — Imágenes 2.2, favicon, audio, etc.
