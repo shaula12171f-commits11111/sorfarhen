@@ -1,4 +1,4 @@
-// app.js - Lógica principal del sistema de estudio
+// app.js - Lógica principal
 
 let currentGalleryId = null;
 let currentMainId = null;
@@ -8,8 +8,8 @@ let currentCards = [];
 let currentCardIndex = 0;
 let currentBlockCards = [];
 let showingRomaji = false;
+let flashBackTarget = 'home'; // 'home' | 'hentai' | 'openings' | 'subs'
 
-// --- Utilidades ---
 function shuffle(array) {
   const arr = [...array];
   for (let i = arr.length - 1; i > 0; i--) {
@@ -35,9 +35,6 @@ if (window.speechSynthesis) {
   speechSynthesis.onvoiceschanged = () => {};
 }
 
-/** Devuelve la URL de portada de una subgalería.
- *  Si cover está vacío/ausente, usa la primera imagen de images.
- */
 function getCoverUrl(subId) {
   const gal = GALLERIES[subId];
   if (!gal) return null;
@@ -46,20 +43,48 @@ function getCoverUrl(subId) {
   return null;
 }
 
-// --- Navegación de pantallas ---
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 
+// --- Home: 2 categorías ---
 function showHome() {
   showScreen('home-screen');
   currentGalleryId = null;
   currentMainId = null;
-  renderMainGalleries();
+  flashBackTarget = 'home';
+  renderTopCategories();
 }
 
-// --- Render galerías principales (10) ---
+function renderTopCategories() {
+  const container = document.getElementById('top-categories');
+  container.innerHTML = '';
+  TOP_CATEGORIES.forEach(cat => {
+    const el = document.createElement('div');
+    el.className = 'top-cat-card' + (cat.active ? '' : ' disabled');
+    el.innerHTML = `
+      <span class="top-cat-icon">${cat.icon}</span>
+      <span class="top-cat-name">${cat.name}</span>
+      <span class="top-cat-desc">${cat.desc}</span>
+    `;
+    if (cat.active) {
+      el.addEventListener('click', () => {
+        if (cat.id === 'hentai') openHentai();
+        else if (cat.id === 'openings') openOpenings();
+      });
+    }
+    container.appendChild(el);
+  });
+}
+
+// --- Galerías hentai ---
+function openHentai() {
+  flashBackTarget = 'hentai';
+  renderMainGalleries();
+  showScreen('hentai-screen');
+}
+
 function renderMainGalleries() {
   const container = document.getElementById('main-galleries');
   container.innerHTML = '';
@@ -80,30 +105,60 @@ function renderMainGalleries() {
   });
 }
 
-// --- Pantalla de subgalerías ---
+document.getElementById('btn-back-hentai').addEventListener('click', showHome);
+
+// --- Openings ---
+function openOpenings() {
+  flashBackTarget = 'openings';
+  renderOpenings();
+  showScreen('openings-screen');
+}
+
+function renderOpenings() {
+  const container = document.getElementById('openings-list');
+  container.innerHTML = '';
+  OPENINGS.forEach((op, i) => {
+    const el = document.createElement('div');
+    el.className = 'opening-card' + (op.active ? '' : ' disabled');
+    const cards = FLASHCARDS[op.id] || [];
+    el.innerHTML = `
+      <span class="op-num">${i + 1}</span>
+      <div class="op-info">
+        <span class="op-name">${op.name}</span>
+        <span class="op-anime">${op.anime}</span>
+        <span class="op-meta">${op.artist} · ${cards.length} palabras</span>
+      </div>
+    `;
+    if (op.active) {
+      el.addEventListener('click', () => {
+        flashBackTarget = 'openings';
+        openFlashcards(op.id, op.name);
+      });
+    }
+    container.appendChild(el);
+  });
+}
+
+document.getElementById('btn-back-openings').addEventListener('click', showHome);
+
+// --- Subgalerías hentai ---
 function openSubs(main) {
   currentMainId = main.id;
+  flashBackTarget = 'subs';
   document.getElementById('subs-title').textContent = main.name;
   const container = document.getElementById('sub-galleries');
   container.innerHTML = '';
   main.subs.forEach(sub => {
     const el = document.createElement('div');
     el.className = 'subcontainer' + (sub.active ? '' : ' is-disabled');
-
     const coverUrl = getCoverUrl(sub.id);
     const countText = (GALLERIES[sub.id] && GALLERIES[sub.id].images)
       ? `${GALLERIES[sub.id].images.length} imágenes`
       : '';
-
     const displayName = `${sub.name} ${sub.id}`;
-
-    let coverHtml = '';
-    if (coverUrl) {
-      coverHtml = `<div class="sub-cover" style="background-image:url('${coverUrl}')"></div>`;
-    } else {
-      coverHtml = `<div class="sub-cover sub-cover-empty"></div>`;
-    }
-
+    let coverHtml = coverUrl
+      ? `<div class="sub-cover" style="background-image:url('${coverUrl}')"></div>`
+      : `<div class="sub-cover sub-cover-empty"></div>`;
     el.innerHTML = `
       <div class="subcontainer-preview${sub.active ? '' : ' disabled'}">
         ${coverHtml}
@@ -113,7 +168,6 @@ function openSubs(main) {
         </div>
       </div>
     `;
-
     if (sub.active && GALLERIES[sub.id]) {
       el.addEventListener('click', () => {
         currentGalleryId = sub.id;
@@ -126,20 +180,17 @@ function openSubs(main) {
   showScreen('subs-screen');
 }
 
-document.getElementById('btn-back-subs').addEventListener('click', showHome);
+document.getElementById('btn-back-subs').addEventListener('click', () => openHentai());
 
-// --- Modal de elección ---
+// --- Modal ---
 const choiceModal = document.getElementById('choice-modal');
-
 document.getElementById('btn-close-choice').addEventListener('click', () => {
   choiceModal.classList.add('hidden');
 });
-
 choiceModal.addEventListener('click', (e) => {
   if (e.target === choiceModal) choiceModal.classList.add('hidden');
 });
 
-// --- Ver hentai (slideshow) ---
 document.getElementById('btn-ver-hentai').addEventListener('click', () => {
   choiceModal.classList.add('hidden');
   openGallery(currentGalleryId);
@@ -148,7 +199,7 @@ document.getElementById('btn-ver-hentai').addEventListener('click', () => {
 function openGallery(id) {
   const gal = GALLERIES[id];
   if (!gal) return;
-  currentImages = gal.images;
+  currentImages = gal.images || [];
   currentImgIndex = 0;
   document.getElementById('gallery-title').textContent = gal.name;
   updateSlideshow();
@@ -157,25 +208,28 @@ function openGallery(id) {
 
 function updateSlideshow() {
   const img = document.getElementById('slideshow-img');
+  if (!currentImages.length) {
+    img.removeAttribute('src');
+    document.getElementById('img-counter').textContent = '0 / 0';
+    return;
+  }
   img.src = currentImages[currentImgIndex];
   document.getElementById('img-counter').textContent =
     `${currentImgIndex + 1} / ${currentImages.length}`;
 }
 
 document.getElementById('btn-prev-img').addEventListener('click', () => {
-  if (currentImages.length === 0) return;
+  if (!currentImages.length) return;
   currentImgIndex = (currentImgIndex - 1 + currentImages.length) % currentImages.length;
   updateSlideshow();
 });
-
 document.getElementById('btn-next-img').addEventListener('click', () => {
-  if (currentImages.length === 0) return;
+  if (!currentImages.length) return;
   currentImgIndex = (currentImgIndex + 1) % currentImages.length;
   updateSlideshow();
 });
-
 document.getElementById('slideshow-img').addEventListener('click', () => {
-  if (currentImages.length === 0) return;
+  if (!currentImages.length) return;
   currentImgIndex = (currentImgIndex + 1) % currentImages.length;
   updateSlideshow();
 });
@@ -184,22 +238,22 @@ document.getElementById('btn-back-gallery').addEventListener('click', () => {
   if (currentMainId) {
     const main = MAIN_GALLERIES.find(m => m.id === currentMainId);
     if (main) openSubs(main);
-    else showHome();
-  } else {
-    showHome();
-  }
+    else openHentai();
+  } else openHentai();
 });
 
-// --- Ver flashcards ---
+// --- Flashcards ---
 document.getElementById('btn-ver-flashcards').addEventListener('click', () => {
   choiceModal.classList.add('hidden');
-  openFlashcards(currentGalleryId);
+  flashBackTarget = 'subs';
+  openFlashcards(currentGalleryId, GALLERIES[currentGalleryId]?.name);
 });
 
-function openFlashcards(id) {
+function openFlashcards(id, title) {
   const cards = FLASHCARDS[id] || [];
   currentCards = cards;
-  document.getElementById('flash-title').textContent = GALLERIES[id]?.name || id;
+  currentGalleryId = id;
+  document.getElementById('flash-title').textContent = title || id;
   document.getElementById('quiz-area').classList.add('hidden');
   document.getElementById('blocks-container').classList.remove('hidden');
   renderBlocks(cards);
@@ -211,17 +265,13 @@ function renderBlocks(cards) {
   container.innerHTML = '';
   const blockSize = 10;
   const numBlocks = Math.ceil(cards.length / blockSize) || 1;
-
   for (let i = 0; i < numBlocks; i++) {
     const start = i * blockSize;
     const end = Math.min(start + blockSize, cards.length);
     const count = end - start;
     const blockEl = document.createElement('div');
     blockEl.className = 'block-card';
-    blockEl.innerHTML = `
-      <h3>Bloque ${i + 1}</h3>
-      <span>${count} palabras</span>
-    `;
+    blockEl.innerHTML = `<h3>Bloque ${i + 1}</h3><span>${count} palabras</span>`;
     blockEl.addEventListener('click', () => startQuiz(cards.slice(start, end), i + 1));
     container.appendChild(blockEl);
   }
@@ -245,20 +295,16 @@ function showCard() {
     document.getElementById('btn-speak').style.display = 'none';
     return;
   }
-
   const card = currentBlockCards[currentCardIndex];
   showingRomaji = false;
-
   document.getElementById('quiz-word').textContent = card.word;
   document.getElementById('btn-speak').style.display = 'inline-flex';
   const romajiEl = document.getElementById('romaji-display');
   romajiEl.textContent = card.romaji;
   romajiEl.classList.add('hidden');
-
   const options = shuffle([card.meaning, ...card.distractors.slice(0, 3)]);
   const optsContainer = document.getElementById('options-container');
   optsContainer.innerHTML = '';
-
   options.forEach(opt => {
     const btn = document.createElement('button');
     btn.className = 'option-btn';
@@ -266,7 +312,6 @@ function showCard() {
     btn.addEventListener('click', () => handleAnswer(btn, opt === card.meaning, card));
     optsContainer.appendChild(btn);
   });
-
   document.getElementById('btn-next-card').classList.add('hidden');
   document.getElementById('quiz-progress').textContent =
     `${currentCardIndex + 1} / ${currentBlockCards.length}`;
@@ -274,7 +319,6 @@ function showCard() {
 
 function handleAnswer(btn, isCorrect, card) {
   document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
-
   if (isCorrect) {
     btn.classList.add('correct');
     setTimeout(() => {
@@ -299,7 +343,6 @@ function showRomajiAndSpeak(card) {
   speakJapanese(card.word);
 }
 
-// Botón de audio al lado de la palabra — siempre disponible
 document.getElementById('btn-speak').addEventListener('click', (e) => {
   e.stopPropagation();
   if (currentCardIndex >= currentBlockCards.length) return;
@@ -316,9 +359,7 @@ document.querySelector('.quiz-card').addEventListener('click', (e) => {
   if (e.target.classList.contains('option-btn') || e.target.id === 'btn-next-card' || e.target.id === 'btn-speak') return;
   if (currentCardIndex >= currentBlockCards.length) return;
   const card = currentBlockCards[currentCardIndex];
-  if (!showingRomaji && card) {
-    showRomajiAndSpeak(card);
-  }
+  if (!showingRomaji && card) showRomajiAndSpeak(card);
 });
 
 document.getElementById('btn-back-to-blocks').addEventListener('click', () => {
@@ -327,14 +368,13 @@ document.getElementById('btn-back-to-blocks').addEventListener('click', () => {
 });
 
 document.getElementById('btn-back-flash').addEventListener('click', () => {
-  if (currentMainId) {
+  if (flashBackTarget === 'openings') openOpenings();
+  else if (flashBackTarget === 'subs' && currentMainId) {
     const main = MAIN_GALLERIES.find(m => m.id === currentMainId);
     if (main) openSubs(main);
-    else showHome();
-  } else {
-    showHome();
-  }
+    else openHentai();
+  } else if (flashBackTarget === 'hentai') openHentai();
+  else showHome();
 });
 
-// Inicial
 showHome();
