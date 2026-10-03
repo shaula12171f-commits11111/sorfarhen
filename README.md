@@ -23,8 +23,8 @@ Sistema de estudio de japonés con flashcards (manga/hentai + openings de anime)
 | **Openings** | Dark seeks light, 熱情のスペクトラム |
 
 ### Openings
-1. **Dark seeks light** — Sicario isekai (Ansatsusha) · 20 palabras
-2. **熱情のスペクトラム** — Nanatsu no Taizai OP1 · 18 palabras
+1. **Dark seeks light** — Sicario isekai · 20 palabras
+2. **熱情のスペクトラム** — Nanatsu no Taizai OP1 · **~45 palabras** (letra completa)
 
 ### Hentai (Historias cortas)
 | Sub | Nombre | Notas |
@@ -33,7 +33,7 @@ Sistema de estudio de japonés con flashcards (manga/hentai + openings de anime)
 | 2.2 | ichika putona sexo de chill | Habitación, 2 imgs + 17 cards |
 
 ## Ampliar
-Edita `js/data.js` (`TOP_CATEGORIES`, `OPENINGS`, `MAIN_GALLERIES`, `FLASHCARDS`).
+Edita `js/data.js`.
 
 ## GitHub Pages
 Settings → Pages → branch `main`.
