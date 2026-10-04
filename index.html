@@ -1,1 +1,110 @@
-PLACEHOLDER_HTML
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorfarhen - Estudio Japonés y Portugués</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Sorfarhen</h1>
+    <p>Estudio de japonés y portugués con flashcards</p>
+  </header>
+
+  <main id="main-content">
+    <section id="home-screen" class="screen active">
+      <h2 class="section-title">¿Qué quieres estudiar?</h2>
+      <div id="top-categories" class="top-categories"></div>
+    </section>
+
+    <section id="hentai-screen" class="screen">
+      <div class="subs-header">
+        <button id="btn-back-hentai" class="btn-back">← Volver</button>
+        <h2 id="hentai-screen-title">Galerías hentai</h2>
+      </div>
+      <div id="main-galleries" class="main-galleries"></div>
+    </section>
+
+    <section id="openings-screen" class="screen">
+      <div class="subs-header">
+        <button id="btn-back-openings" class="btn-back">← Volver</button>
+        <h2>Openings</h2>
+      </div>
+      <div id="openings-list" class="openings-list"></div>
+    </section>
+
+    <section id="subs-screen" class="screen">
+      <div class="subs-header">
+        <button id="btn-back-subs" class="btn-back">← Volver</button>
+        <h2 id="subs-title"></h2>
+      </div>
+      <div id="sub-galleries" class="subcontainers"></div>
+    </section>
+
+    <div id="choice-modal" class="modal hidden">
+      <div class="modal-content">
+        <h3 id="choice-title">¿Qué quieres hacer?</h3>
+        <div class="choice-buttons">
+          <button id="btn-ver-hentai" class="btn btn-primary">Ver hentai</button>
+          <button id="btn-ver-flashcards" class="btn btn-secondary">Ver flashcards</button>
+        </div>
+        <button id="btn-close-choice" class="btn-close">×</button>
+      </div>
+    </div>
+
+    <section id="gallery-screen" class="screen">
+      <div class="gallery-header">
+        <button id="btn-back-gallery" class="btn-back">← Volver</button>
+        <h2 id="gallery-title"></h2>
+      </div>
+      <div class="slideshow-container">
+        <img id="slideshow-img" src="" alt="Imagen de la galería">
+        <div class="slideshow-controls">
+          <button id="btn-prev-img" class="btn">◀</button>
+          <span id="img-counter">1 / 1</span>
+          <button id="btn-next-img" class="btn">▶</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="flashcards-screen" class="screen">
+      <div class="flashcards-header">
+        <button id="btn-back-flash" class="btn-back">← Volver</button>
+        <h2 id="flash-title"></h2>
+      </div>
+      <div id="blocks-container" class="blocks-container"></div>
+    </section>
+
+    <section id="quiz-screen" class="screen">
+      <div class="flashcards-header">
+        <button id="btn-back-to-blocks" class="btn-back">← Bloques</button>
+        <h2 id="quiz-block-title">Bloque</h2>
+        <span id="quiz-progress" class="quiz-progress-badge"></span>
+      </div>
+      <div class="quiz-card">
+        <div class="word-row">
+          <h2 id="quiz-word" class="quiz-word"></h2>
+          <button id="btn-speak" class="btn-speak" title="Escuchar" aria-label="Escuchar palabra">🔊</button>
+        </div>
+        <div id="romaji-display" class="romaji-display hidden"></div>
+        <div id="options-container" class="options-container"></div>
+        <button id="btn-next-card" class="btn btn-next hidden">Siguiente</button>
+      </div>
+      <div id="block-done" class="block-done hidden">
+        <h2 class="done-title">¡Mazo completado!</h2>
+        <p id="done-subtitle" class="done-subtitle"></p>
+        <div class="done-buttons">
+          <button id="btn-repeat-block" class="btn btn-secondary">Repetir mazo</button>
+          <button id="btn-next-block" class="btn btn-primary">Siguiente mazo</button>
+          <button id="btn-done-to-blocks" class="btn btn-ghost">Ver todos los bloques</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
