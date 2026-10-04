@@ -52,7 +52,8 @@ const GALLERIES = {
   "pt1.1": { name: "motel putinha", cover: "", images: [
     "https://img.ge/i/tz76i10.png",
     "https://img.ge/i/JjjB527.png",
-    "https://img.ge/i/tEDEL20.png"
+    "https://img.ge/i/tEDEL20.png",
+    "https://img.ge/i/IU9Zt99.png"
   ] },
   "2.1": { name: "itsuki playera putona", cover: "", images: ["https://img.ge/i/wmODD63.png", "https://img.ge/i/oo9rL91.png"] },
   "2.2": { name: "ichika putona sexo de chill", cover: "", images: ["https://img.ge/i/6ot6t26.png", "https://img.ge/i/dazsg51.png"] }
@@ -153,7 +154,26 @@ const FLASHCARDS = {
     { word: "incrível", romaji: "incrível", meaning: "increible", distractors: ["normal", "malo", "aburrido"] },
     { word: "ótimo", romaji: "ótimo", meaning: "genial / optimo", distractors: ["malo", "regular", "terrible"] },
     { word: "saber", romaji: "", meaning: "saber", distractors: ["ignorar", "olvidar", "dudar"] },
-    { word: "disso", romaji: "", meaning: "de eso", distractors: ["de esto", "de nada", "de todo"] }
+    { word: "disso", romaji: "", meaning: "de eso", distractors: ["de esto", "de nada", "de todo"] },
+    { word: "dia seguinte", romaji: "", meaning: "dia siguiente", distractors: ["hoy", "ayer", "manana"] },
+    { word: "você", romaji: "você", meaning: "tu / usted", distractors: ["yo", "el", "nosotros"] },
+    { word: "durma", romaji: "", meaning: "duerma / dormir", distractors: ["coma", "corra", "hable"] },
+    { word: "negão", romaji: "negão", meaning: "negro (coloquial)", distractors: ["blanco", "amigo", "extranjero"] },
+    { word: "isso mesmo", romaji: "", meaning: "exactamente / eso mismo", distractors: ["al reves", "nunca", "tal vez"] },
+    { word: "fará", romaji: "fará", meaning: "hara", distractors: ["hizo", "hara no", "queria"] },
+    { word: "esquecer", romaji: "", meaning: "olvidar", distractors: ["recordar", "guardar", "aprender"] },
+    { word: "completamente", romaji: "", meaning: "completamente", distractors: ["un poco", "casi", "nunca"] },
+    { word: "pequeno", romaji: "", meaning: "pequeno", distractors: ["grande", "largo", "grueso"] },
+    { word: "certo", romaji: "", meaning: "de acuerdo / cierto", distractors: ["falso", "nunca", "quiza"] },
+    { word: "mas", romaji: "", meaning: "pero", distractors: ["y", "o", "porque"] },
+    { word: "só", romaji: "só", meaning: "solo", distractors: ["mucho", "nunca", "siempre"] },
+    { word: "porque", romaji: "", meaning: "porque", distractors: ["aunque", "cuando", "donde"] },
+    { word: "estou", romaji: "", meaning: "estoy", distractors: ["estuve", "estare", "soy"] },
+    { word: "na seca", romaji: "", meaning: "en sequia / con ganas", distractors: ["satisfecha", "cansada", "ocupada"] },
+    { word: "tá bom", romaji: "tá bom", meaning: "esta bien", distractors: ["esta mal", "nunca", "tal vez"] },
+    { word: "ótima", romaji: "ótima", meaning: "excelente", distractors: ["mala", "regular", "pesima"] },
+    { word: "escolha", romaji: "", meaning: "eleccion", distractors: ["error", "duda", "pregunta"] },
+    { word: "se arrepender", romaji: "", meaning: "arrepentirse", distractors: ["alegrarse", "olvidar", "aceptar"] }
   ],
   "op-dark-seeks-light": [
     { word: "不平等", romaji: "fubyodo", meaning: "desigualdad", distractors: ["igualdad", "paz", "libertad"] },
@@ -224,6 +244,17 @@ const PARAGRAPHS = {
         "Uma delas não é casada?",
         "É sim, mas ela vai mudar de ideia depois de experimentar esse pau, grande, grosso e incrível.",
         "Ahah é ótimo saber disso."
+      ]
+    },
+    {
+      image: 3,
+      label: "Imagen 4",
+      lines: [
+        "Dia seguinte:",
+        "Você quer que eu durma com esse negão!?",
+        "Isso mesmo. O mestre fará você esquecer completamente do pequeno Futaro-kun.",
+        "Mestre!? Certo... mas isso é só porque estou na seca, tá bom!?",
+        "Heh... ótima escolha, você não vai se arrepender disso."
       ]
     }
   ]
