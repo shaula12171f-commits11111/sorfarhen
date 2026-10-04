@@ -289,8 +289,8 @@ function startQuiz(blockNum) {
   currentBlockStart = (blockNum - 1) * blockSize;
   currentBlockEnd = Math.min(currentBlockStart + blockSize, currentCards.length);
   const slice = currentCards.slice(currentBlockStart, currentBlockEnd);
-  const isOpening = String(currentGalleryId || '').startsWith('op-');
-  currentBlockCards = isOpening ? [...slice] : shuffle(slice);
+  // Siempre en orden del mazo (sin mezclar palabras)
+  currentBlockCards = [...slice];
   currentCardIndex = 0;
   document.getElementById('quiz-block-title').textContent = `Bloque ${blockNum}`;
   document.getElementById('block-done').classList.add('hidden');
@@ -312,6 +312,7 @@ function showCard() {
   const romajiEl = document.getElementById('romaji-display');
   romajiEl.textContent = card.romaji || '';
   romajiEl.classList.add('hidden');
+  // Las opciones si se mezclan (la correcta no siempre en el mismo boton)
   const options = shuffle([card.meaning, ...card.distractors.slice(0, 3)]);
   const optsContainer = document.getElementById('options-container');
   optsContainer.innerHTML = '';
