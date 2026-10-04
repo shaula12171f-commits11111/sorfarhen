@@ -289,7 +289,6 @@ function startQuiz(blockNum) {
   currentBlockStart = (blockNum - 1) * blockSize;
   currentBlockEnd = Math.min(currentBlockStart + blockSize, currentCards.length);
   const slice = currentCards.slice(currentBlockStart, currentBlockEnd);
-  // Siempre en orden del mazo (sin mezclar palabras)
   currentBlockCards = [...slice];
   currentCardIndex = 0;
   document.getElementById('quiz-block-title').textContent = `Bloque ${blockNum}`;
@@ -312,7 +311,6 @@ function showCard() {
   const romajiEl = document.getElementById('romaji-display');
   romajiEl.textContent = card.romaji || '';
   romajiEl.classList.add('hidden');
-  // Las opciones si se mezclan (la correcta no siempre en el mismo boton)
   const options = shuffle([card.meaning, ...card.distractors.slice(0, 3)]);
   const optsContainer = document.getElementById('options-container');
   optsContainer.innerHTML = '';
@@ -342,6 +340,29 @@ function showBlockDone() {
   } else {
     nextBtn.classList.add('hidden');
   }
+  renderParagraphs();
+}
+
+function renderParagraphs() {
+  const box = document.getElementById('done-paragraphs');
+  if (!box) return;
+  const groups = (typeof PARAGRAPHS !== 'undefined' && PARAGRAPHS[currentGalleryId]) || [];
+  if (!groups.length) {
+    box.classList.add('hidden');
+    box.innerHTML = '';
+    return;
+  }
+  box.classList.remove('hidden');
+  let html = '<h3 class="paras-title">Frases del mazo</h3>';
+  groups.forEach((g, i) => {
+    const label = g.label || ('Imagen ' + (i + 1));
+    html += `<div class="para-group"><div class="para-label">${label}</div>`;
+    (g.lines || []).forEach(line => {
+      html += `<p class="para-line">${line}</p>`;
+    });
+    html += '</div>';
+  });
+  box.innerHTML = html;
 }
 
 function handleAnswer(btn, isCorrect, card) {
