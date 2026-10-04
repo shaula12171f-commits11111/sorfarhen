@@ -57,23 +57,78 @@ function shuffle(array) {
   return arr;
 }
 
-function speakWord(text) {
+let cachedVoices = [];
+let warnedNoPtVoice = false;
+
+function refreshVoices() {
   if (!window.speechSynthesis) return;
+  cachedVoices = speechSynthesis.getVoices() || [];
+}
+
+function pickVoice(langPrefix) {
+  const voices = cachedVoices.length ? cachedVoices : (speechSynthesis.getVoices() || []);
+  if (!voices.length) return null;
+
+  if (langPrefix === 'pt') {
+    const order = [
+      v => v.lang === 'pt-BR' || v.lang === 'pt_BR',
+      v => v.lang === 'pt-PT' || v.lang === 'pt_PT',
+      v => (v.lang || '').toLowerCase().startsWith('pt'),
+      v => /portugu|brazil|brasil|portuguese/i.test(v.name || '')
+    ];
+    for (const test of order) {
+      const found = voices.find(test);
+      if (found) return found;
+    }
+    return null;
+  }
+
+  const jaOrder = [
+    v => v.lang === 'ja-JP' || v.lang === 'ja_JP',
+    v => (v.lang || '').toLowerCase().startsWith('ja'),
+    v => /japan|japanese|日本語/i.test(v.name || '')
+  ];
+  for (const test of jaOrder) {
+    const found = voices.find(test);
+    if (found) return found;
+  }
+  return null;
+}
+
+function speakWord(text) {
+  if (!window.speechSynthesis || !text) return;
   window.speechSynthesis.cancel();
+
+  const isPt = String(currentGalleryId || '').startsWith('pt') || currentMode === 'pt';
+  const lang = isPt ? 'pt-BR' : 'ja-JP';
+  const voice = pickVoice(isPt ? 'pt' : 'ja');
+
+  if (!voice) {
+    if (isPt && !warnedNoPtVoice) {
+      warnedNoPtVoice = true;
+      console.warn('[sorfarhen] No hay voz en portugues instalada. Instala Portugues (Brasil) en el sistema o prueba Chrome.');
+      const tip = document.getElementById('voice-tip');
+      if (tip) {
+        tip.textContent = 'Sin voz PT en este navegador. En Windows: Configuracion > Hora e idioma > Voz > agregar Portugues (Brasil). O usa Chrome.';
+        tip.classList.remove('hidden');
+      }
+    }
+  }
+
   const utter = new SpeechSynthesisUtterance(text);
-  const isPt = String(currentGalleryId || '').startsWith('pt');
-  utter.lang = isPt ? 'pt-BR' : 'ja-JP';
+  utter.lang = lang;
   utter.rate = 0.9;
-  const voices = speechSynthesis.getVoices();
-  const prefix = isPt ? 'pt' : 'ja';
-  const voice = voices.find(v => v.lang.startsWith(prefix));
-  if (voice) utter.voice = voice;
+  if (voice) {
+    utter.voice = voice;
+    utter.lang = voice.lang || lang;
+  }
   speechSynthesis.speak(utter);
 }
 function speakJapanese(text) { speakWord(text); }
 
 if (window.speechSynthesis) {
-  speechSynthesis.onvoiceschanged = () => {};
+  refreshVoices();
+  speechSynthesis.onvoiceschanged = refreshVoices;
 }
 
 function getCoverUrl(subId) {
