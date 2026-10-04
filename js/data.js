@@ -49,7 +49,11 @@ const MAIN_GALLERIES_PT = [
 ];
 
 const GALLERIES = {
-  "pt1.1": { name: "motel putinha", cover: "", images: ["https://img.ge/i/tz76i10.png", "https://img.ge/i/JjjB527.png"] },
+  "pt1.1": { name: "motel putinha", cover: "", images: [
+    "https://img.ge/i/tz76i10.png",
+    "https://img.ge/i/JjjB527.png",
+    "https://img.ge/i/tEDEL20.png"
+  ] },
   "2.1": { name: "itsuki playera putona", cover: "", images: ["https://img.ge/i/wmODD63.png", "https://img.ge/i/oo9rL91.png"] },
   "2.2": { name: "ichika putona sexo de chill", cover: "", images: ["https://img.ge/i/6ot6t26.png", "https://img.ge/i/dazsg51.png"] }
 };
@@ -123,7 +127,33 @@ const FLASHCARDS = {
     { word: "camisinha", romaji: "", meaning: "condon", distractors: ["camiseta", "toalla", "sabanas"] },
     { word: "enchendo", romaji: "", meaning: "llenando", distractors: ["vaciando", "limpiando", "cerrando"] },
     { word: "desse", romaji: "", meaning: "de ese", distractors: ["de este", "de aquel", "de otro"] },
-    { word: "gozando", romaji: "", meaning: "gozando / corriendose", distractors: ["durmiendo", "llorando", "riendo"] }
+    { word: "gozando", romaji: "", meaning: "gozando / corriendose", distractors: ["durmiendo", "llorando", "riendo"] },
+    { word: "por falar nisso", romaji: "", meaning: "por cierto / hablando de eso", distractors: ["de nada", "perdon", "hasta luego"] },
+    { word: "chegou", romaji: "", meaning: "llego", distractors: ["salio", "espero", "volvio"] },
+    { word: "hora", romaji: "", meaning: "hora", distractors: ["dia", "minuto", "semana"] },
+    { word: "apresentar", romaji: "", meaning: "presentar", distractors: ["esconder", "olvidar", "ignorar"] },
+    { word: "irmãs", romaji: "irmãs", meaning: "hermanas", distractors: ["amigas", "primas", "madres"] },
+    { word: "não posso", romaji: "não posso", meaning: "no puedo", distractors: ["puedo", "quiero", "debo"] },
+    { word: "deixar", romaji: "", meaning: "dejar", distractors: ["tomar", "traer", "guardar"] },
+    { word: "elas", romaji: "", meaning: "ellas", distractors: ["ellos", "nosotros", "vosotros"] },
+    { word: "conheçam", romaji: "conheçam", meaning: "conozcan", distractors: ["olviden", "eviten", "ignoren"] },
+    { word: "pau", romaji: "", meaning: "pene", distractors: ["mano", "boca", "dedo"] },
+    { word: "grande", romaji: "", meaning: "grande", distractors: ["pequeno", "fino", "corto"] },
+    { word: "como", romaji: "", meaning: "como", distractors: ["sin", "contra", "sobre"] },
+    { word: "meu", romaji: "", meaning: "mio", distractors: ["tuyo", "suyo", "nuestro"] },
+    { word: "né", romaji: "né", meaning: "verdad? / no?", distractors: ["nunca", "siempre", "quiza"] },
+    { word: "uma", romaji: "", meaning: "una", distractors: ["dos", "ninguna", "todas"] },
+    { word: "delas", romaji: "", meaning: "de ellas", distractors: ["de ellos", "de nosotros", "de ti"] },
+    { word: "casada", romaji: "", meaning: "casada", distractors: ["soltera", "divorciada", "viuda"] },
+    { word: "mudar", romaji: "", meaning: "cambiar", distractors: ["quedar", "repetir", "olvidar"] },
+    { word: "ideia", romaji: "ideia", meaning: "idea", distractors: ["duda", "miedo", "sueno"] },
+    { word: "depois", romaji: "", meaning: "despues", distractors: ["antes", "ahora", "nunca"] },
+    { word: "experimentar", romaji: "", meaning: "probar / experimentar", distractors: ["rechazar", "evitar", "ignorar"] },
+    { word: "grosso", romaji: "", meaning: "grueso", distractors: ["fino", "suave", "corto"] },
+    { word: "incrível", romaji: "incrível", meaning: "increible", distractors: ["normal", "malo", "aburrido"] },
+    { word: "ótimo", romaji: "ótimo", meaning: "genial / optimo", distractors: ["malo", "regular", "terrible"] },
+    { word: "saber", romaji: "", meaning: "saber", distractors: ["ignorar", "olvidar", "dudar"] },
+    { word: "disso", romaji: "", meaning: "de eso", distractors: ["de esto", "de nada", "de todo"] }
   ],
   "op-dark-seeks-light": [
     { word: "不平等", romaji: "fubyodo", meaning: "desigualdad", distractors: ["igualdad", "paz", "libertad"] },
@@ -182,6 +212,18 @@ const PARAGRAPHS = {
         "Tome toda minha porra grossa, sua putinha!",
         "Consigo sentir a camisinha enchendo com a porra grossa desse pauzão preto",
         "Gozandoooo!!"
+      ]
+    },
+    {
+      image: 2,
+      label: "Imagen 3",
+      lines: [
+        "Por falar nisso, Ichika…",
+        "Chegou a hora de me apresentar as suas irmãs, não posso deixar que elas não conheçam um pau grande e preto como o meu, né?",
+        "Siim, mestre!",
+        "Uma delas não é casada?",
+        "É sim, mas ela vai mudar de ideia depois de experimentar esse pau, grande, grosso e incrível.",
+        "Ahah é ótimo saber disso."
       ]
     }
   ]
