@@ -49,7 +49,7 @@ const MAIN_GALLERIES_PT = [
 ];
 
 const GALLERIES = {
-  "pt1.1": { name: "motel putinha", cover: "", images: ["https://img.ge/i/tz76i10.png"] },
+  "pt1.1": { name: "motel putinha", cover: "", images: ["https://img.ge/i/tz76i10.png", "https://img.ge/i/JjjB527.png"] },
   "2.1": { name: "itsuki playera putona", cover: "", images: ["https://img.ge/i/wmODD63.png", "https://img.ge/i/oo9rL91.png"] },
   "2.2": { name: "ichika putona sexo de chill", cover: "", images: ["https://img.ge/i/6ot6t26.png", "https://img.ge/i/dazsg51.png"] }
 };
@@ -109,7 +109,21 @@ const FLASHCARDS = {
     { word: "te", romaji: "", meaning: "te", distractors: ["me", "se", "nos"] },
     { word: "ouçam", romaji: "ouçam", meaning: "oigan", distractors: ["vean", "toquen", "ignoren"] },
     { word: "sua", romaji: "", meaning: "tu / suya", distractors: ["mi", "nuestra", "su"] },
-    { word: "putinha", romaji: "", meaning: "putita", distractors: ["senora", "amiga", "hermana"] }
+    { word: "putinha", romaji: "", meaning: "putita", distractors: ["senora", "amiga", "hermana"] },
+    { word: "eu", romaji: "", meaning: "yo", distractors: ["tu", "el", "nosotros"] },
+    { word: "vou", romaji: "", meaning: "voy", distractors: ["vienes", "viene", "vamos"] },
+    { word: "gozar", romaji: "", meaning: "correrme / gozar", distractors: ["dormir", "comer", "parar"] },
+    { word: "caralho", romaji: "", meaning: "carajo", distractors: ["por favor", "gracias", "perdon"] },
+    { word: "tome", romaji: "", meaning: "toma", distractors: ["dale", "deja", "guarda"] },
+    { word: "toda", romaji: "", meaning: "toda", distractors: ["media", "poca", "ninguna"] },
+    { word: "porra", romaji: "", meaning: "leche / semen", distractors: ["agua", "sangre", "sudor"] },
+    { word: "grossa", romaji: "", meaning: "gruesa", distractors: ["fina", "suave", "corta"] },
+    { word: "consigo", romaji: "", meaning: "consigo", distractors: ["no puedo", "quiero", "intento"] },
+    { word: "sentir", romaji: "", meaning: "sentir", distractors: ["ver", "oir", "tocar"] },
+    { word: "camisinha", romaji: "", meaning: "condon", distractors: ["camiseta", "toalla", "sabanas"] },
+    { word: "enchendo", romaji: "", meaning: "llenando", distractors: ["vaciando", "limpiando", "cerrando"] },
+    { word: "desse", romaji: "", meaning: "de ese", distractors: ["de este", "de aquel", "de otro"] },
+    { word: "gozando", romaji: "", meaning: "gozando / corriendose", distractors: ["durmiendo", "llorando", "riendo"] }
   ],
   "op-dark-seeks-light": [
     { word: "不平等", romaji: "fubyodo", meaning: "desigualdad", distractors: ["igualdad", "paz", "libertad"] },
