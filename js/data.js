@@ -162,4 +162,29 @@ const FLASHCARDS = {
   ]
 };
 
+const PARAGRAPHS = {
+  "pt1.1": [
+    {
+      image: 0,
+      label: "Imagen 1",
+      lines: [
+        "Certa noite em um motel:",
+        "Sim mestre!! Me foda com força!!",
+        "Arrebenta a minha buceta com esse pauzão preto!!",
+        "Ahah, quer que os vizinhos te ouçam, sua putinha?"
+      ]
+    },
+    {
+      image: 1,
+      label: "Imagen 2",
+      lines: [
+        "Eu vou gozar, caralho!",
+        "Tome toda minha porra grossa, sua putinha!",
+        "Consigo sentir a camisinha enchendo com a porra grossa desse pauzão preto",
+        "Gozandoooo!!"
+      ]
+    }
+  ]
+};
+
 const EXTRA_DISTRACTORS = ["casa", "comida", "agua", "fuego", "libro", "amigo", "noche", "dia", "grande", "pequeno", "rapido", "lento", "feliz", "triste"];
