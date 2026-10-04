@@ -532,6 +532,29 @@ header p {
   color: #8888a0;
 }
 
+.block-card.done {
+  border-color: rgba(46, 204, 113, 0.35);
+  background: linear-gradient(145deg, #1a2a22, #16201a);
+}
+
+.block-left {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.done-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #2ecc71;
+  background: rgba(46, 204, 113, 0.15);
+  border: 1px solid rgba(46, 204, 113, 0.35);
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
 .quiz-card {
   background: linear-gradient(165deg, #1c1c2c 0%, #161622 100%);
   border-radius: 18px;
