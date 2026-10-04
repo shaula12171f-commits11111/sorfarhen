@@ -11,24 +11,20 @@ git revert <SHA>
 
 ---
 
-## [2026-10-03 21:18 UTC] — Quiz: pantalla dedicada + fin de mazo
+## [2026-10-04 13:50 UTC] — Galerías hentai PT (portugués)
 
 ### Cambios
-- Al entrar a un bloque, se abre **pantalla de quiz** (ya no se ven los bloques abajo).
-- Al terminar el mazo:
-  - **Repetir mazo**
-  - **Siguiente mazo** (si hay más)
-  - **Ver todos los bloques**
+- Nueva categoría en home: **Galerias hentai PT**
+- Galería **pt1 quintiputas** → sub **pt1.1 motel putinha**
+- 15 flashcards PT → ES de la imagen del motel
+- Audio TTS en portugués (pt-BR) para esas cards
+- Imagen: aún sin URL pública (envíala tipo img.ge para el slideshow)
 
 ### Archivos
-- `index.html`, `js/app.js`, `css/style.css`, `CHANGELOG.md`
+- `js/data.js`, `js/app.js`, `index.html`, `CHANGELOG.md`
 
 ---
 
-## [2026-10-03 21:10 UTC] — Tsubasa (3er opening)
-
----
-
-## [2026-10-03 21:01 UTC] — Openings en orden de la letra
+## [2026-10-03 21:18 UTC] — Quiz pantalla dedicada + fin de mazo
 
 ---
