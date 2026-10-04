@@ -49,7 +49,7 @@ const MAIN_GALLERIES_PT = [
 ];
 
 const GALLERIES = {
-  "pt1.1": { name: "motel putinha", cover: "", images: [] },
+  "pt1.1": { name: "motel putinha", cover: "", images: ["https://img.ge/i/tz76i10.png"] },
   "2.1": { name: "itsuki playera putona", cover: "", images: ["https://img.ge/i/wmODD63.png", "https://img.ge/i/oo9rL91.png"] },
   "2.2": { name: "ichika putona sexo de chill", cover: "", images: ["https://img.ge/i/6ot6t26.png", "https://img.ge/i/dazsg51.png"] }
 };
